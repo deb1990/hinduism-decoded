@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import type { ChartDef, GNode } from '../charts';
 import { STAGES, type StageId } from '../gods';
+import { useReveal } from '../hooks';
 
 const W = 940;
 const PAD = 24;
-const LEVEL_GAP = 64;
-const TOP = 20;
-const CHIP_H = 22;
-const CHIP_STEP = 28;
-const NEAR = 28; // gap between a god and the consort joined to them
+const LEVEL_GAP = 84;
+const TOP = 24;
+const CHIP_H = 26;
+const CHIP_STEP = 34;
+const NEAR = 34; // gap between a god and the consort joined to them
+
+// Stage colours, used for the gradient on each connector.
+const HEX: Record<StageId, string> = {
+  veda: '#ff9a3c', later: '#4cc3d9', upanishad: '#b79cff', epic: '#f0c05a', purana: '#5fd6a4', bhakti: '#ff7a8a',
+};
 
 interface Placed extends GNode {
   x: number;
@@ -20,15 +27,16 @@ interface Placed extends GNode {
 }
 
 function sizeOf(n: GNode): Pick<Placed, 'w' | 'h' | 'hdr' | 'cols' | 'chipW'> {
-  const textW = Math.max(n.label.length * 7.4, (n.sub?.length ?? 0) * 6.2) + 24;
+  const subW = (n.sub?.length ?? 0) * 5.9 + 32;
   if (n.members) {
     const cols = n.cols ?? 2;
-    const chipW = n.chipW ?? 84;
+    const chipW = (n.chipW ?? 84) + 8;
     const rows = Math.ceil(n.members.length / cols);
-    const hdr = n.sub ? 44 : 30;
-    return { w: Math.max(cols * chipW + (cols + 1) * 8, textW, 120), h: hdr + rows * CHIP_STEP + 4, hdr, cols, chipW };
+    const hdr = n.sub ? 54 : 40;
+    const titleW = n.label.length * 8.8 + 32; // small capitals with wide letter spacing
+    return { w: Math.max(cols * chipW + (cols + 1) * 10, titleW, subW, 120), h: hdr + rows * CHIP_STEP + 8, hdr, cols, chipW };
   }
-  return { w: Math.max(120, textW), h: n.sub ? 44 : 36, hdr: 0, cols: 0, chipW: 0 };
+  return { w: Math.max(120, n.label.length * 8.1 + 32, subW), h: n.sub ? 54 : 44, hdr: 0, cols: 0, chipW: 0 };
 }
 
 function layout(chart: ChartDef) {
@@ -50,15 +58,15 @@ function layout(chart: ChartDef) {
     });
     y += Math.max(...row.map((n) => n.h)) + LEVEL_GAP;
   }
-  const height = Math.max(...Object.values(placed).map((n) => n.y + n.h)) + 24;
+  const height = Math.max(...Object.values(placed).map((n) => n.y + n.h)) + 28;
   return { placed, height };
 }
 
 function Chip({ x, y, w, label, stage, god }: { x: number; y: number; w: number; label: string; stage: StageId; god?: string }) {
   const g = (
-    <g className={`cn s-${stage}${god ? ' link' : ''}`}>
-      <rect x={x} y={y} width={w} height={CHIP_H} rx="6" />
-      <text className="cn-name small" x={x + w / 2} y={y + 15} textAnchor="middle">{label}</text>
+    <g className={`cn chip s-${stage}${god ? ' link' : ''}`}>
+      <rect x={x} y={y} width={w} height={CHIP_H} rx={CHIP_H / 2} />
+      <text className="cn-name small" x={x + w / 2} y={y + 17.5} textAnchor="middle">{label}</text>
     </g>
   );
   return god ? <a href={`#god-${god}`}>{g}</a> : g;
@@ -66,41 +74,38 @@ function Chip({ x, y, w, label, stage, god }: { x: number; y: number; w: number;
 
 function NodeView({ n }: { n: Placed }) {
   if (n.members) {
+    const count = Math.min(n.cols, n.members.length);
+    const used = count * n.chipW + (count + 1) * 10;
+    const left = n.x + (n.w - used) / 2 + 10;
     return (
       <g>
-        <rect className="grp" x={n.x} y={n.y} width={n.w} height={n.h} rx="12" />
-        <text className="grp-title" x={n.x + 12} y={n.y + 19}>{n.label}</text>
-        {n.sub && <text className="cn-sub" x={n.x + 12} y={n.y + 34}>{n.sub}</text>}
-        {n.members.map((m, i) => {
-          const c = i % n.cols;
-          const r = Math.floor(i / n.cols);
-          const used = Math.min(n.cols, n.members!.length) * n.chipW + (Math.min(n.cols, n.members!.length) + 1) * 8;
-          const left = n.x + (n.w - used) / 2 + 8;
-          return (
-            <Chip
-              key={m.label}
-              x={left + c * (n.chipW + 8)}
-              y={n.y + n.hdr + r * CHIP_STEP}
-              w={n.chipW}
-              label={m.label}
-              stage={m.stage ?? n.stage}
-              god={m.god}
-            />
-          );
-        })}
+        <rect className="grp" x={n.x} y={n.y} width={n.w} height={n.h} rx="20" />
+        <text className="grp-title" x={n.x + 16} y={n.y + 25}>{n.label}</text>
+        {n.sub && <text className="cn-sub" x={n.x + 16} y={n.y + 43}>{n.sub}</text>}
+        {n.members.map((m, i) => (
+          <Chip
+            key={m.label}
+            x={left + (i % n.cols) * (n.chipW + 10)}
+            y={n.y + n.hdr + Math.floor(i / n.cols) * CHIP_STEP}
+            w={n.chipW}
+            label={m.label}
+            stage={m.stage ?? n.stage}
+            god={m.god}
+          />
+        ))}
       </g>
     );
   }
   const body = (
-    <g className={`cn s-${n.stage}${n.god ? ' link' : ''}`}>
-      <rect x={n.x} y={n.y} width={n.w} height={n.h} rx="8" />
+    <g className={`cn plain s-${n.stage}${n.god ? ' link' : ''}`}>
+      <rect x={n.x} y={n.y} width={n.w} height={n.h} rx={Math.min(n.h / 2, 22)} />
       {n.sub ? (
         <>
-          <text className="cn-name" x={n.x + n.w / 2} y={n.y + 19} textAnchor="middle">{n.label}</text>
-          <text className="cn-sub" x={n.x + n.w / 2} y={n.y + 35} textAnchor="middle">{n.sub}</text>
+          <text className="cn-name" x={n.x + n.w / 2} y={n.y + 23} textAnchor="middle">{n.label}</text>
+          <text className="cn-sub" x={n.x + n.w / 2} y={n.y + 41} textAnchor="middle">{n.sub}</text>
         </>
       ) : (
-        <text className="cn-name" x={n.x + n.w / 2} y={n.y + n.h / 2 + 4} textAnchor="middle">{n.label}</text>
+        <text className="cn-name" x={n.x + n.w / 2} y={n.y + n.h / 2 + 5} textAnchor="middle">{n.label}</text>
       )}
     </g>
   );
@@ -108,30 +113,76 @@ function NodeView({ n }: { n: Placed }) {
 }
 
 function Diagram({ chart }: { chart: ChartDef }) {
+  const [hover, setHover] = useState<string | null>(null);
+  const [ref, shown] = useReveal<HTMLDivElement>(0.2);
   const { placed, height } = layout(chart);
-  const paths: { d: string; dash: boolean; key: string }[] = chart.edges.map((e, i) => {
+
+  const near = new Set<string>();
+  if (hover) {
+    near.add(hover);
+    chart.edges.forEach((e) => {
+      if (e.from === hover) near.add(e.to);
+      if (e.to === hover) near.add(e.from);
+    });
+  }
+
+  const edges = chart.edges.map((e, i) => {
     const a = placed[e.from];
     const b = placed[e.to];
+    const hot = hover !== null && (e.from === hover || e.to === hover);
     if (e.kind === 'link') {
       const [l, r] = a.x < b.x ? [a, b] : [b, a];
       const cy = l.y + l.h / 2;
-      return { key: `${i}`, dash: true, d: `M${l.x + l.w} ${cy}H${r.x}` };
+      return { i, hot, dash: true, d: `M${l.x + l.w + 3} ${cy}H${r.x - 3}`, grad: null as null | { x1: number; y1: number; x2: number; y2: number; c1: string; c2: string } };
     }
     const fx = a.x + a.w / 2;
     const fy = a.y + a.h;
     const tx = b.x + b.w / 2;
     const ty = b.y;
-    const mid = ty - 24;
-    return { key: `${i}`, dash: false, d: fx === tx ? `M${fx} ${fy}V${ty}` : `M${fx} ${fy}V${mid}H${tx}V${ty}` };
+    const dy = (ty - fy) * 0.55;
+    return {
+      i, hot, dash: false,
+      d: `M${fx} ${fy}C${fx} ${fy + dy} ${tx} ${ty - dy} ${tx} ${ty}`,
+      grad: { x1: fx, y1: fy, x2: tx, y2: ty === fy ? fy + 1 : ty, c1: HEX[a.stage], c2: HEX[b.stage] },
+    };
   });
 
   return (
-    <svg className="gods-chart" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`${chart.title}. ${chart.concept}`}>
-      <g className="edges">
-        {paths.map((p) => <path key={p.key} d={p.d} className={p.dash ? 'dash' : undefined} />)}
-      </g>
-      {Object.values(placed).map((n) => <NodeView key={n.id} n={n} />)}
-    </svg>
+    <div ref={ref} className={`chart-canvas${shown ? ' in' : ''}${hover ? ' has-hover' : ''}`}>
+      <svg className="gods-chart" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`${chart.title}. ${chart.concept}`}>
+        <defs>
+          {edges.map((e) => e.grad && (
+            <linearGradient key={e.i} id={`eg-${chart.id}-${e.i}`} gradientUnits="userSpaceOnUse" x1={e.grad.x1} y1={e.grad.y1} x2={e.grad.x2} y2={e.grad.y2}>
+              <stop offset="0" stopColor={e.grad.c1} />
+              <stop offset="1" stopColor={e.grad.c2} />
+            </linearGradient>
+          ))}
+        </defs>
+        <g className="edges">
+          {edges.map((e) => (
+            <path
+              key={e.i}
+              d={e.d}
+              pathLength={e.dash ? undefined : 1}
+              className={`${e.dash ? 'dash' : 'draw'}${e.hot ? ' hot' : ''}`}
+              stroke={e.grad ? `url(#eg-${chart.id}-${e.i})` : undefined}
+            />
+          ))}
+        </g>
+        {Object.values(placed).map((n) => (
+          <g
+            key={n.id}
+            className={`node${hover && !near.has(n.id) ? ' dim' : ''}`}
+            onMouseEnter={() => setHover(n.id)}
+            onMouseLeave={() => setHover(null)}
+            onFocus={() => setHover(n.id)}
+            onBlur={() => setHover(null)}
+          >
+            <NodeView n={n} />
+          </g>
+        ))}
+      </svg>
+    </div>
   );
 }
 
@@ -157,10 +208,9 @@ export function ChartPanel({ chart }: { chart: ChartDef }) {
         {STAGES.filter((s) => used.has(s.id)).map((s) => (
           <span key={s.id}><i className={`swatch s-${s.id}`} /> {s.label}</span>
         ))}
-        <span><i className="line solid" /> comes from or contains</span>
         {hasLink && <span><i className="line dashed" /> consort</span>}
+        <span className="legend-tip">Hover a god to see its connections. Click to open its card.</span>
       </div>
-      <p className="note">Colour shows the book group that defines each god. Click a box to jump to that god’s card.</p>
     </section>
   );
 }
