@@ -1,88 +1,6 @@
 import type { BookDetail } from '../bookDetails';
 
 export const BOOKS_LAW: Record<string, BookDetail> = {
-  sutras: {
-    glance: [
-      { label: 'Class', value: 'Smriti, the Kalpa Sutras: rules for rite and daily life' },
-      { label: 'Date', value: 'c. 600–200 BCE' },
-      { label: 'Language', value: 'Late Vedic and early classical Sanskrit, in terse aphorisms (sutras)' },
-      { label: 'Three kinds', value: 'Shrauta (public rites), Grihya (household rites), Dharma (law and conduct)' },
-      { label: 'Main authors', value: 'Apastamba, Baudhayana, Gautama, Vasishtha, among others' },
-      { label: 'Place', value: 'One of the six Vedangas, the limbs of the Veda' },
-    ],
-    sections: [
-      {
-        title: 'Structure and contents',
-        points: [
-          'The Kalpa Sutras are the Vedic school’s “rule books”. Each school (shakha) had its own set, in three parts: Shrauta, Grihya and Dharma.',
-          'The Shrauta Sutras give the exact order of the great public rites, such as the soma sacrifice, the new and full moon rites and the building of the fire altar.',
-          'The Grihya Sutras cover the domestic rites around a single household fire: birth, naming, first feeding, the thread ceremony (upanayana), marriage, house-building and funeral.',
-          'The Dharma Sutras give rules of conduct: the duties of each class and stage of life, purity, food, inheritance, crime and punishment, and penances.',
-          'The Sulba Sutras, “rules of the cord”, are a related set on measuring and building altars. They contain the first Indian geometry.',
-          'The style is extremely compressed, so that a rule can be memorised and recited. Commentaries are needed to understand them.',
-        ],
-      },
-      {
-        title: 'Key teachings and ideas',
-        points: [
-          'Dharma, in these texts, means the customary rules of a community of those who know the Veda, drawn from the Veda, from tradition (smriti) and from the conduct of the learned.',
-          'Life is divided into four stages (ashramas): student, householder, forest-dweller and renouncer. Apastamba argues for the householder as the main one.',
-          'Four classes (varnas) have different duties and different standards of purity. The rules often favour Brahmins in matters of penalty and honour.',
-          'The rites of passage (samskaras) mark each stage of life, and are still the basis for Hindu life-cycle rites.',
-          'Rules for purity cover food, contact, water and the touch of the dead, which later became the basis for ideas about caste.',
-          'Penances (prayashchitta) are set for each offence, from mild fasts to severe ones, to restore a person to the community.',
-          'Royal duties include protecting the people and administering justice, taxes and punishment, an early statement of Indian ideas of kingship.',
-        ],
-      },
-      {
-        title: 'What it says about the gods',
-        points: [
-          'These are practical rule books, and they say little about the gods themselves. They assume the Vedic gods and the Vedic rites.',
-          'The domestic rites make offerings to a wide range of deities, with Agni, Prajapati, Soma and the house spirits among them.',
-          'The Grihya rites include offerings to the ancestors, to the directions, and to the spirits (bhutas), a view of the world full of powers.',
-          'Some Grihya texts mention gods of a later type, such as Rudra, Vishnu and the Goddess, a trace of the changing religion.',
-        ],
-      },
-      {
-        title: 'Famous passages and stories',
-        points: [
-          'Apastamba’s Dharmasutra is known for its moral tone: it says that dharma and adharma do not go about saying “here we are”, and one must judge by what the learned approve.',
-          'Baudhayana’s Sulba Sutra states what is now called the Pythagorean theorem, in the rule that the diagonal of a rectangle makes an area equal to both sides.',
-          'The Grihya rules for the thread ceremony (upanayana), which initiate a boy into study of the Veda, are the earliest full account of the rite.',
-          'The wedding rite, with its seven steps around the fire, is described in the Grihya Sutras, in the form still used.',
-          'The Gautama Dharmasutra gives early rules on law, procedure and the king’s duty.',
-        ],
-      },
-      {
-        title: 'Composition, language and transmission',
-        points: [
-          'They were composed within the Vedic schools, each by a teacher whose name the school bears, and each is attached to a Veda.',
-          'They come from many regions: Apastamba is from the south (Andhra), Baudhayana is also southern, Gautama is perhaps from the north.',
-          'Their style is the model for the grammar of Panini and for the later philosophical sutras, which also use a compact form.',
-          'Later law books, including the Manusmriti, are built on them and replace them as the main sources.',
-        ],
-      },
-      {
-        title: 'Later influence',
-        points: [
-          'They are the base of the Dharmashastra tradition, the learned literature on law and conduct that runs through the whole later history.',
-          'They stand behind the Hindu life-cycle rites still performed today, and the ideas of the four stages and four classes.',
-          'The Sulba geometry is one of the first mathematical texts of India.',
-          'Colonial courts, in the eighteenth and nineteenth centuries, drew on this tradition when they set up “Hindu law”.',
-        ],
-      },
-      {
-        title: 'Reading it today',
-        points: [
-          'Patrick Olivelle’s Dharmasutras (Oxford World’s Classics, 1999) translates Apastamba, Gautama, Baudhayana and Vasishtha.',
-          'Georg Bühler’s older versions in the Sacred Books of the East (vols. 2 and 14) are in the public domain.',
-          'For rites, Oldenberg’s Grihya Sutras (Sacred Books of the East, vols. 29 and 30) is the standard older translation.',
-        ],
-      },
-    ],
-    gods: ['agni', 'prajapati', 'soma'],
-  },
-
   manusmriti: {
     glance: [
       { label: 'Class', value: 'Smriti, the best-known Dharmashastra, or law book' },
@@ -168,88 +86,6 @@ export const BOOKS_LAW: Record<string, BookDetail> = {
       },
     ],
     gods: ['brahma', 'hiranyagarbha', 'prajapati', 'marichi', 'atri'],
-  },
-
-  darshanas: {
-    glance: [
-      { label: 'Class', value: 'Smriti and philosophy: the foundational sutras of the six schools' },
-      { label: 'Date', value: 'c. 200 BCE–400 CE' },
-      { label: 'Language', value: 'Classical Sanskrit, in terse aphorisms (sutras)' },
-      { label: 'The six', value: 'Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa and Vedanta' },
-      { label: 'Key authors', value: 'Gautama, Kanada, Kapila, Patanjali, Jaimini, Badarayana' },
-      { label: 'Covers here', value: 'Mainly the Brahma Sutras and the Yoga Sutras' },
-    ],
-    sections: [
-      {
-        title: 'Structure and contents',
-        points: [
-          'Six darshanas, “viewpoints”, are traditionally grouped in pairs: Nyaya with Vaisheshika, Samkhya with Yoga, and Mimamsa with Vedanta.',
-          'Nyaya Sutras (Gautama) set out logic and the means of knowledge (perception, inference, comparison and testimony). Vaisheshika Sutras (Kanada) set out categories of being and an atomic theory.',
-          'Samkhya, in the Samkhya Karika of Ishvarakrishna (about the fourth century CE), gives a dualism of Purusha (consciousness) and Prakriti (nature). Yoga adds a discipline and a God (Ishvara).',
-          'The Yoga Sutras of Patanjali have 196 sutras in four chapters (padas): on concentration (samadhi), on practice (sadhana), on powers (vibhuti) and on liberation (kaivalya).',
-          'The Purva Mimamsa Sutras of Jaimini examine the Vedic commands and the interpretation of ritual. The Brahma Sutras of Badarayana, about 555 sutras in four chapters, summarise the Upanishads.',
-          'The four chapters of the Brahma Sutras deal with harmony of the texts (samanvaya), answers to objections (avirodha), the means (sadhana) and the fruit (phala).',
-        ],
-      },
-      {
-        title: 'Key teachings and ideas',
-        points: [
-          'Yoga Sutras: yoga is the stilling of the movements of the mind (chitta-vritti-nirodha), so that the seer rests in its own nature.',
-          'The eight limbs of yoga are restraints (yama), observances (niyama), posture (asana), breath control (pranayama), withdrawal of the senses (pratyahara), concentration (dharana), meditation (dhyana) and absorption (samadhi).',
-          'Samkhya counts twenty-five principles, from Purusha and Prakriti down to the elements, and teaches release by discriminating the self from nature.',
-          'Nyaya establishes rules of debate and inference, and argues for the existence of a creator God (Ishvara) in later works.',
-          'Mimamsa holds that the Veda is eternal and authorless, that its core is the commands for ritual, and that dharma is known only from them.',
-          'The Brahma Sutras hold that Brahman is the origin, support and end of the world, and attempt to show the Upanishads teach one consistent doctrine.',
-        ],
-      },
-      {
-        title: 'What it says about the gods',
-        points: [
-          'The Brahma Sutras treat Brahman as the one cause of the world, and read the gods of the Vedas as its forms or servants.',
-          'The Yoga Sutras name Ishvara, a special being untouched by suffering, whom one can meditate on, and whose sign is Om.',
-          'Classical Samkhya has no creator god and is called atheistic, while Mimamsa gives the gods little role beyond being the recipients of the offering.',
-          'Nyaya and Vaisheshika later argue for God as the maker of the world by the pattern of an effect needing a cause.',
-        ],
-      },
-      {
-        title: 'Famous passages and stories',
-        points: [
-          'The opening of the Brahma Sutras, “athato brahma-jijnasa” (now, therefore, the inquiry into Brahman), is one of the most quoted lines in Indian philosophy.',
-          'The second Yoga Sutra, “yogash chitta-vritti-nirodhah”, defines yoga in four words.',
-          'The Yoga Sutras’ list of obstacles and the idea of the “afflictions” (kleshas), from ignorance to fear of death, are widely taught.',
-          'Jaimini’s opening, “athato dharma-jijnasa”, parallels the Brahma Sutras’ opening and begins the inquiry into dharma.',
-          'The Nyaya account of the five-membered argument is the earliest form of a formal syllogism in India.',
-        ],
-      },
-      {
-        title: 'Composition, language and transmission',
-        points: [
-          'The sutras are so compressed that they are nearly unintelligible alone, and commentaries (bhashyas) were composed to explain them.',
-          'The Brahma Sutras were explained by Shankara, Ramanuja, Madhva, Nimbarka and Vallabha, each reaching a different school of Vedanta.',
-          'The Yoga Sutras were explained in the Vyasa Bhashya (about the fifth century), which is the main early commentary.',
-          'Patanjali the author of the Yoga Sutras is traditionally the same as the grammarian of the same name, but scholars doubt this.',
-          'The Samkhya Karika is in verse and was widely read, and was translated into Chinese in the sixth century.',
-        ],
-      },
-      {
-        title: 'Later influence',
-        points: [
-          'The Brahma Sutras, Upanishads and Gita form the “three sources” (prasthana-traya) of Vedanta, so all later Vedanta begins with commentary on them.',
-          'The Yoga Sutras became the basis of modern yoga after Vivekananda and later teachers, though modern posture yoga has little basis in the text.',
-          'Samkhya ideas, such as the three qualities (gunas), pervade the Gita, the Puranas and Ayurveda.',
-          'Nyaya’s logic shaped debate in Hindu, Buddhist and Jain philosophy, and survives in the modern Navya-Nyaya of Bengal.',
-        ],
-      },
-      {
-        title: 'Reading it today',
-        points: [
-          'Edwin Bryant’s The Yoga Sutras of Patanjali (North Point Press, 2009) has the text with the classical commentaries.',
-          'George Thibaut’s translation of the Brahma Sutras with Shankara’s commentary is in the public domain (Sacred Books of the East, vols. 34 and 38).',
-          'Surendranath Dasgupta’s A History of Indian Philosophy (Cambridge, 1922–55) is a classic survey of all six schools.',
-        ],
-      },
-    ],
-    gods: ['brahman'],
   },
 
   ramayana: {
@@ -387,13 +223,28 @@ export const BOOKS_LAW: Record<string, BookDetail> = {
       {
         title: 'Famous passages and stories',
         points: [
-          'The Bhagavad Gita, in the Bhishma Parva (chapters 25–42), is the best known part, a dialogue between Krishna and Arjuna on the battlefield.',
+          'The Bhagavad Gita, in the Bhishma Parva (chapters 25–42), is the best known part, a dialogue between Krishna and Arjuna on the battlefield (see its own section below).',
           'The dice game and the disrobing of Draupadi (Sabha Parva) is the turning point of the epic.',
           'The Yaksha Prashna (Vana Parva), in which Yudhishthira answers a spirit’s riddles, is a famous test of wisdom.',
           'The story of Nala and Damayanti, of Savitri and Satyavan, and of Shakuntala are among the many tales told within the frame.',
           'The death of Abhimanyu in the chakravyuha, the duel of Arjuna and Karna, and the fall of Duryodhana are the high points of the war.',
           'The Vishnu Sahasranama, the thousand names of Vishnu, is in the Anushasana Parva, and the Sanatsujatiya, on death and immortality, is in the Udyoga Parva.',
           'Yudhishthira and the dog at the gates of heaven, in the last parva, is a famous test of compassion.',
+        ],
+      },
+      {
+        title: 'The Bhagavad Gita (Bhishma Parva, chapters 25–42)',
+        points: [
+          'The Gita is the 18-chapter, about 700-verse dialogue between Krishna and Arjuna just before the war begins. Sanjaya reports it to the blind king Dhritarashtra, with divine sight to see the battlefield.',
+          'Chapter 1 sets the scene: Arjuna, seeing his kin in the opposing army, drops his bow in despair. Chapter 2 is the core: the self is eternal and cannot be killed, and one must act without attachment to the fruit.',
+          'Chapters 3 to 6 develop the path of action, the path of knowledge, renunciation and meditation. Chapters 7 to 12 turn to God, with the cosmic form in chapter 11 and the praise of devotion in chapter 12.',
+          'Chapters 13 to 17 teach the field and its knower, the three gunas and the supreme person. Chapter 18 sums up and ends with Arjuna’s decision to act.',
+          'Three paths lead to the goal: action (karma yoga), knowledge (jnana yoga) and devotion (bhakti yoga). The Gita harmonises them, and joins the Upanishads, Samkhya, Yoga and Vedic ritual in one teaching.',
+          'Krishna presents himself as the supreme being, the source and end of everything, and the basis of Brahman (14.27). Whenever dharma declines, he comes into being (4.7–8).',
+          'Famous verses: 2.47 on action without attachment to its fruit, 11.32 where Krishna calls himself time, the destroyer of the worlds, and 18.66, “abandon all duties and take refuge in me alone”.',
+          'Its date is inside the epic’s own: it was probably added in the last centuries BCE or the first of the Common Era. It was soon treated as a separate text, and is read and recited on its own.',
+          'Shankara, Ramanuja and Madhva each wrote commentaries, finding non-dualism, qualified non-dualism and dualism in it. Tilak, Gandhi, Aurobindo and Vivekananda read it afresh, and Charles Wilkins’s 1785 translation was the first Sanskrit work to be translated into English directly.',
+          'Good translations: Barbara Stoler Miller (Bantam, 1986), Eknath Easwaran (Nilgiri, 1985) and Gavin Flood and Charles Martin (Norton, 2012). Read chapters 2, 12 and 11 first.',
         ],
       },
       {
@@ -426,93 +277,969 @@ export const BOOKS_LAW: Record<string, BookDetail> = {
         ],
       },
     ],
-    gods: ['krishna', 'shiva', 'vishnu', 'durga', 'indra', 'vayu', 'yama', 'kartikeya', 'ganesha', 'parashurama', 'kalki', 'narada', 'chandra'],
+    gods: ['krishna', 'shiva', 'vishnu', 'brahman', 'durga', 'indra', 'vayu', 'yama', 'kartikeya', 'ganesha', 'parashurama', 'kalki', 'narada', 'chandra'],
   },
 
-  gita: {
+  mimamsa: {
     glance: [
-      { label: 'Class', value: 'Smriti, part of the Mahabharata (Bhishma Parva, chapters 25–42)' },
-      { label: 'Date', value: 'c. 200 BCE–200 CE' },
-      { label: 'Language', value: 'Classical Sanskrit, in verse' },
-      { label: 'Size', value: '18 chapters, about 700 verses' },
-      { label: 'Speakers', value: 'Krishna to Arjuna, reported by Sanjaya to the blind king Dhritarashtra' },
-      { label: 'Status', value: 'One of the “three sources” of Vedanta, and the best loved Hindu text' },
+      { label: "Class", value: "Darshana sutra: the founding text of the Mimamsa school" },
+      { label: "Date", value: "c. 300–100 BCE; the debated range runs to 200 CE" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 2,700 sutras in twelve chapters" },
+      { label: "Author", value: "Jaimini, by tradition a pupil of Vyasa" },
+      { label: "Place", value: "Northern India, in the Vedic ritual schools" },
     ],
     sections: [
       {
-        title: 'Structure and contents',
+        title: "Structure and contents",
         points: [
-          'Chapter 1 sets the scene: the armies face each other at Kurukshetra and Arjuna, seeing his kin on the other side, drops his bow in despair.',
-          'Chapter 2, “Sankhya Yoga”, is the core: the self is eternal and not slain, and one must act without attachment to the fruit.',
-          'Chapters 3 to 6 develop the path of action (karma yoga), the path of knowledge (jnana), renunciation of action, and meditation.',
-          'Chapters 7 to 12 turn to God: Krishna reveals himself as the source of all, shows his cosmic form in chapter 11, and praises devotion (bhakti) in chapter 12.',
-          'Chapters 13 to 17 teach the field and its knower, the three qualities (gunas), the supreme person (chapter 15) and the divine and demonic natures.',
-          'Chapter 18 summarises and ends with Krishna’s final command, and Arjuna’s decision to act.',
+          "Mimamsa means “reflection”. This school is also called Purva Mimamsa, the earlier enquiry, because it studies the ritual part of the Veda, while Vedanta (Uttara Mimamsa) studies the Upanishads.",
+          "The twelve chapters cover the sources of dharma, the kinds of Vedic command, the details of sacrifice, the order of rites and who is qualified to perform them.",
+          "It is a book of rules for interpreting the Vedic texts, and so is close to a manual of law and method.",
         ],
       },
       {
-        title: 'Key teachings and ideas',
+        title: "Key teachings and ideas",
         points: [
-          'The self (atman) is eternal, unborn and indestructible. The body dies, but the self is not killed (2.20), so grief for the dead is misplaced.',
-          'Act according to your duty (svadharma) without desire for the reward: “you have a right to the action alone, never to its fruits” (2.47).',
-          'Three paths lead to the goal: action (karma yoga), knowledge (jnana yoga) and devotion (bhakti yoga), and the Gita harmonises them.',
-          'The three gunas, sattva, rajas and tamas, shape all nature and all minds, and one must rise above them.',
-          'Equanimity is the mark of the wise: the same in pleasure and pain, success and failure (2.38, 2.48).',
-          'God is the source and goal of all, and he who sees God in all beings and all beings in God is the true yogi (6.29–30).',
-          'The last verses (18.66) ask Arjuna to give up all duties and surrender to Krishna alone, which devotional traditions treat as the highest teaching.',
+          "The opening sutra is “athato dharma-jijnasa”: “now, therefore, the enquiry into dharma”.",
+          "Dharma is what the Veda commands, and can be known only through the Veda.",
+          "The Veda is eternal and has no author, human or divine (apaurusheya). Its words are self-standing and need no guarantor.",
+          "Right action, mostly Vedic ritual, produces its result through an unseen force (apurva) and not through a god’s favour.",
         ],
       },
       {
-        title: 'What it says about the gods',
+        title: "What it says about the gods",
         points: [
-          'Krishna presents himself as the supreme being, the source and end of everything. In chapter 10 he says that among the gods he is Vishnu, among the Rudras Shankara, and among the Vedas the Samaveda.',
-          'In chapter 11 he shows his universal form (vishvarupa), with endless mouths, eyes and arms, in which the armies are seen rushing into his mouths.',
-          'It identifies the Vedic gods as lower forms of worship: those who worship other gods with faith worship Krishna, even if not rightly (9.23).',
-          'It joins the impersonal Brahman of the Upanishads with the personal God: Krishna says he is the basis of Brahman (14.27).',
-          'It speaks of avatars: whenever dharma declines, he comes into being (4.7–8).',
+          "This is the most radical view of the orthodox schools: no creator god is needed.",
+          "Mimamsa holds that the gods exist only as the beings named in the mantras, and have no form beyond the words that praise them.",
+          "The ritual works because it is performed correctly, not because a god is pleased.",
+          "Later Mimamsakas such as Kumarila argued against the existence of a creator and are among the clearest atheist voices in the Hindu tradition.",
         ],
       },
       {
-        title: 'Famous passages and stories',
+        title: "Famous passages and stories",
         points: [
-          '2.47: “karmanye vadhikaraste ma phaleshu kadachana”, the best known verse on action without attachment to its fruit.',
-          '4.7–8: “whenever dharma declines”, the classic statement of the avatar doctrine.',
-          '11.32: Krishna, in his cosmic form, calls himself time, the destroyer of the worlds. Robert Oppenheimer recalled this verse after the first atomic test.',
-          '15.1–4: the picture of the world as an upside-down banyan tree, with roots above and branches below.',
-          '18.66: “abandon all duties and take refuge in me alone”, the verse that devotional readers take as the climax.',
+          "The opening enquiry into dharma.",
+          "The argument for the eternity of the Veda and of the relation between word and meaning.",
+          "The rules of interpretation: what counts as a command, and how to settle a conflict between texts.",
         ],
       },
       {
-        title: 'Composition, language and transmission',
+        title: "Composition, language and transmission",
         points: [
-          'It sits inside the Mahabharata, but it was soon treated as a separate text, and is read, recited and commented on on its own.',
-          'It is among the few Hindu texts with a wide agreement on its text: the 700 verses in the standard form.',
-          'It uses the language of the Upanishads, the Samkhya and Yoga schools, and the Vedic ritual, and joins them in one teaching, which scholars see as a deliberate synthesis.',
-          'Sanjaya narrates it to Dhritarashtra through a gift of divine sight, which lets him see the war from afar.',
+          "The sutras were probably put together between 300 and 100 BCE, from older teaching.",
+          "Shabara’s commentary (about the 1st to 4th century CE) is the oldest on it, and was followed by the sub-commentaries of Kumarila Bhatta and Prabhakara in the 7th century.",
         ],
       },
       {
-        title: 'Later influence',
+        title: "Later influence",
         points: [
-          'Shankara, Ramanuja and Madhva all wrote commentaries, finding in it support for non-dualism, qualified non-dualism and dualism respectively.',
-          'The Jnaneshwari, a thirteenth-century Marathi commentary by Jnaneshwar, brought it to ordinary people.',
-          'Modern readers include Tilak (Gita Rahasya), Gandhi (who called it his “spiritual dictionary” and read it as a call to non-attachment), Aurobindo and Vivekananda.',
-          'Charles Wilkins’s 1785 translation was the first Sanskrit work translated into English directly, and it reached Emerson and Thoreau.',
-          'It is the most translated Hindu text, and the basis of the ISKCON movement’s teaching, with a famous commentary by A. C. Bhaktivedanta Swami Prabhupada.',
-          'Whether it justifies war, or teaches nonviolence, is a long debate: Gandhi read it as an allegory of inner struggle.',
+          "Its rules of interpretation were used by the writers of Hindu law and by Vedanta.",
+          "It shaped the doctrine that the Veda is the highest authority, which defined “orthodoxy” in India.",
+          "Its debates with Buddhists and Jains over the Veda and God shaped Indian philosophy.",
         ],
       },
       {
-        title: 'Reading it today',
+        title: "Reading it today",
         points: [
-          'Barbara Stoler Miller’s verse translation (Bantam, 1986) is celebrated for its poetry.',
-          'Eknath Easwaran’s version (Nilgiri Press, 1985) is clear, with a commentary for general readers.',
-          'Winthrop Sargeant’s edition (SUNY, 1979) gives the Sanskrit, a word-by-word gloss and a translation, useful for study.',
-          'Gavin Flood and Charles Martin’s version (Norton, 2012) is a recent, readable translation.',
-          'Read the second and twelfth chapters first, then the eleventh, and go back to the rest.',
+          "Ganganatha Jha’s Purva Mimamsa in its Sources (Banaras, 1942) is a classic study.",
+          "Francis Clooney’s Thinking Ritually (Vienna, 1990) is a good modern account.",
         ],
       },
     ],
-    gods: ['krishna', 'vishnu', 'brahman', 'indra', 'aryaman'],
+    gods: ["indra", "agni"],
+  },
+  vaisheshika: {
+    glance: [
+      { label: "Class", value: "Darshana sutra: the founding text of the Vaisheshika school" },
+      { label: "Date", value: "c. 200 BCE–100 CE" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 370 sutras in ten chapters" },
+      { label: "Author", value: "Kanada, also called Kashyapa or Uluka, by tradition" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The name comes from vishesha, “particularity”: the school asks what makes each thing what it is.",
+          "The ten chapters cover substance, quality, motion, universals, particulars and inherence, the categories into which the world is sorted.",
+          "The sutra lists six categories: substance, quality, action, universal, particular and inherence. A seventh, absence, was added later.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Matter is made of atoms (paramanu) of earth, water, fire and air, which are eternal, and combine to make larger things.",
+          "Nine kinds of substance exist: the four atoms, ether, time, space, self and mind.",
+          "The aim of the system is to know the real nature of things as a way to liberation.",
+          "It is a naturalist account of the world, and is among the earliest atomic theories.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "The sutra itself says little about God.",
+          "It says the Veda has authority because it was composed by a trustworthy source, which later writers read as God.",
+          "Later Vaisheshika, joined with Nyaya, brought in a creator, Ishvara, who sets the atoms in motion.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The list of the six categories.",
+          "The atomic theory of matter.",
+          "The proof of ether (akasha) from sound.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "The sutra is dated by scholars between about the 2nd century BCE and the 1st century CE.",
+          "Prashastapada’s Padarthadharmasangraha (about 6th century CE) is the main early work that built on it.",
+          "The school merged with Nyaya, and the two were taught together from about the 10th century.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It was a main part of Nyaya-Vaisheshika, the leading school of logic and natural philosophy in India.",
+          "Its atomic theory is much discussed in the history of science, though it is not experimental.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Nandalal Sinha’s translation, The Vaisesika Sutras of Kanada (Allahabad, 1911), is old but available.",
+          "Karl Potter’s Indian Metaphysics and Epistemology (Princeton, 1977) gives a modern account.",
+        ],
+      },
+    ],
+    gods: ["brahman"],
+  },
+  nyaya: {
+    glance: [
+      { label: "Class", value: "Darshana sutra: the founding text of the Nyaya school of logic" },
+      { label: "Date", value: "c. 200 BCE–200 CE" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 530 sutras in five chapters" },
+      { label: "Author", value: "Gautama, also called Akshapada, by tradition" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Nyaya means “rule” or “method”, and the school is the study of reasoning and debate.",
+          "The first sutra lists sixteen topics, from the sources of knowledge to the faults of argument and the ways a debate can be lost.",
+          "The five chapters cover the sources of knowledge, doubt and debate, the nature of the self and body, and the ways of refuting an opponent.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "There are four sources of valid knowledge (pramana): perception, inference, comparison and testimony.",
+          "The five-part syllogism (proposition, reason, example, application and conclusion) is the model for argument.",
+          "The self is real and distinct from the body and mind; it knows, feels and wills.",
+          "Liberation comes from knowing the truth about these things and ending false belief.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "The sutra has a few lines on God (Ishvara) as the one who gives the fruits of action.",
+          "Later Nyaya writers made the proof of God a central subject. Udayana’s Nyayakusumanjali (11th century CE) argues that the world, as an effect, must have an intelligent maker.",
+          "This is the clearest case in the Hindu tradition of arguing for God from reason, in a debate against Buddhists and Mimamsakas who denied a creator.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The first sutra’s list of sixteen topics.",
+          "The definition of inference and the five-part argument.",
+          "The long debate against the Buddhists on the self.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "The sutra took its present form between about 200 BCE and 200 CE, with later additions.",
+          "Vatsyayana’s commentary (about the 4th to 5th century CE) is the oldest, and Uddyotakara, Vacaspati and Udayana followed.",
+          "About the 13th century CE, Gangesha’s Tattvachintamani started the “new logic” (Navya-Nyaya), which became the main school of Indian logic for 500 years.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "Nyaya’s methods of debate shaped all later Indian philosophy, including Buddhism and Jainism.",
+          "Navya-Nyaya’s exact technical language was used in law and grammar across India until modern times.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Mrinalkanti Gangopadhyay’s Nyaya-Sutras (Calcutta, 1982) gives the sutras with commentary.",
+          "Jonardon Ganeri’s Philosophy in Classical India (Routledge, 2001) is a good modern introduction.",
+        ],
+      },
+    ],
+    gods: ["brahman", "shiva"],
+  },
+  samkhya: {
+    glance: [
+      { label: "Class", value: "Karika: the classic text of the Samkhya school" },
+      { label: "Date", value: "c. 350–450 CE; the school itself is much older" },
+      { label: "Language", value: "Sanskrit, in verse (arya metre)" },
+      { label: "Size", value: "72 verses (sometimes counted as 70)" },
+      { label: "Author", value: "Ishvarakrishna" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Samkhya is one of the oldest Indian philosophies; its ideas appear in the Upanishads, the Mahabharata and the Gita, but its oldest full text, the Samkhya Karika, is from about 400 CE.",
+          "The Karika has 72 verses. The Samkhya Sutra, often cited with it, is a much later work, probably of the 14th century CE.",
+          "It lists 25 principles of reality, from nature (prakriti) and the self (purusha) down to the five elements.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "The world has two eternal sources: prakriti, matter, which is active but blind; and purusha, the self, which sees but does not act. There are many selves.",
+          "Prakriti has three strands (gunas): sattva (clarity), rajas (energy) and tamas (inertia), whose balance makes everything in the world.",
+          "Suffering comes from mistaking the self for matter, and liberation comes from the knowledge that the two are separate.",
+          "The image used is that of a blind man and a lame man: matter carries the self, and the self sees for matter.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "Classical Samkhya has no creator god: matter evolves of its own accord, for the sake of the self.",
+          "This is called “atheistic” Samkhya, in contrast to the Yoga of Patanjali, which keeps the same scheme and adds Ishvara.",
+          "The gods, in this view, are among the beings in the world of matter, not above it.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The list of 25 principles.",
+          "The image of the blind man and the lame one.",
+          "The dancer who stops dancing once she has been seen: matter withdraws when the self has understood.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Tradition names Kapila as the founder, and the school is much older than the Karika.",
+          "Gaudapada’s commentary and the Yuktidipika are the main early commentaries.",
+          "The Karika was translated into Chinese in the 6th century by Paramartha, which is the strongest evidence for its date.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "The three gunas and the idea of prakriti are used throughout the Gita, the Puranas, Tantra and Ayurveda.",
+          "Its pairing with Yoga is the basis of the practical path of Patanjali.",
+          "Its dualism is an important foil for Advaita Vedanta, which argues for one reality.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Gerald Larson’s Classical Samkhya (Motilal, 1969) is the standard study.",
+          "The Karika is short, and a page or two a day with a good commentary is enough to see its structure.",
+        ],
+      },
+    ],
+    gods: ["brahman"],
+  },
+  arthashastra: {
+    glance: [
+      { label: "Class", value: "Shastra: a treatise on artha, wealth and power" },
+      { label: "Date", value: "c. 300 BCE–300 CE; the present text is probably from the first centuries CE" },
+      { label: "Language", value: "Classical Sanskrit, in prose with some verse" },
+      { label: "Size", value: "15 books, 150 chapters, about 6,000 verses by its own count" },
+      { label: "Author", value: "Kautilya, also called Chanakya or Vishnugupta, minister of Chandragupta Maurya, by tradition" },
+      { label: "Found", value: "The manuscript was rediscovered in Mysore in 1905 and printed in 1909" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Book 1 is the training of the king and his ministers; Book 2 is the running of the state, with its officers, mines, trade and revenue.",
+          "Book 3 is law, with courts and the law of marriage, debt and inheritance; Book 4 is the suppression of crime.",
+          "Book 5 covers the conduct of officials; Book 6 gives the theory of the state, with seven elements: king, ministers, territory, fort, treasury, army and ally.",
+          "Books 7 to 14 cover foreign policy, war, secret practices and the work of spies; Book 15 explains how the text is arranged.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "The text defines artha as the livelihood of people and the earth, and as the most important of the three aims of life.",
+          "The king’s duty is the welfare of his subjects: “in the happiness of his subjects lies the king’s happiness”.",
+          "It teaches realist statecraft: spies, the “circle of states” of neighbours and enemies, and the use of both force and policy.",
+          "It treats dharma as a limit on kings; the king should protect each person’s duties, and should not become a tyrant.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "The gods are not the subject; the text uses them in state ritual, oaths and the building of temples.",
+          "It advises the king to build temples of the gods in the fortified city and to fix their places: Aparajita, Apratihata, Shiva, Vaishravana (Kubera), Ashvins, Shri (Lakshmi) and Madira.",
+          "It also treats religion as an instrument of rule, and recommends that spies pose as holy men.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The seven elements of the state (saptanga).",
+          "The “mandala” theory: the neighbour is the natural enemy, and the neighbour’s neighbour the natural ally.",
+          "The rules for the day of the king, divided into eight parts.",
+          "The long account of the work of spies and of secret agents.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Tradition says Kautilya wrote it for Chandragupta Maurya, around 300 BCE; many scholars think the present text was compiled later, by one or more authors, and is a work of the first to third centuries CE.",
+          "It was lost for centuries, and the one manuscript found in 1905 by R. Shamasastry, a librarian in Mysore, was edited and published in 1909.",
+          "Patrick Olivelle’s translation (Oxford, 2013) argues the text had a single author and a date nearer to 100 CE.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It is quoted by later writers on politics and the law, and by Kamandaka’s Nitisara.",
+          "In modern India, it is often cited in discussions of strategy and the economy.",
+          "It has been compared with Machiavelli’s The Prince, though it is much longer and more detailed.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "R. P. Kangle’s three-volume edition and translation (Bombay, 1960–65) is the scholarly standard.",
+          "L. N. Rangarajan’s Penguin version (1992) is the most readable; Olivelle’s translation is the most recent.",
+          "Because it is a manual of rule, read it for how India thought about the state, not for its doctrine on the gods.",
+        ],
+      },
+    ],
+    gods: ["kubera", "shiva", "lakshmi"],
+  },
+  kamasutra: {
+    glance: [
+      { label: "Class", value: "Kamashastra: the treatise on kama, pleasure and love" },
+      { label: "Date", value: "c. 200–400 CE; the range is debated" },
+      { label: "Language", value: "Classical Sanskrit, in prose and verse" },
+      { label: "Size", value: "7 parts, 36 chapters, 64 sections and about 1,250 verses" },
+      { label: "Author", value: "Vatsyayana Mallanaga; almost nothing else is known of him" },
+      { label: "Place", value: "North India, probably the Gupta world of cities such as Pataliputra" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Part 1 is general: the three aims of life, the education of a citizen and the 64 arts, such as music, dance, poetry and perfume-making.",
+          "Part 2 is on sexual union and is the part most people know; it is only about a quarter of the book.",
+          "Part 3 is on winning a wife, Part 4 on a wife’s conduct, and Part 5 on other men’s wives.",
+          "Part 6 is on courtesans and Part 7 on ways of improving appearance and attraction.",
+          "The text mixes manual, manners and social guide; much of it is about the life of a cultured urban man.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Kama is one of the three aims of life with dharma and artha, and should be pursued within a life guided by dharma.",
+          "The text says that dharma comes first, artha second and kama third, but holds that all three should be balanced.",
+          "It treats women as people with their own wishes, and gives them advice on the same footing; its account of what women want is more thoughtful than many later texts.",
+          "It teaches that pleasure is a skill to be learned, with training, manners and attention to the other person.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "It is not a religious text, and gives the gods little place.",
+          "It gives a myth of its own origin: Prajapati first spoke the three aims; Manu took dharma, Brihaspati took artha, and Nandi, Shiva’s bull, took kama in a thousand chapters.",
+          "Shvetaketu, the son of Uddalaka, abridged Nandi’s work to five hundred chapters, and later teachers cut it again, until Vatsyayana composed the present short form.",
+          "It mentions public festivals and gatherings as occasions for meeting, and treats the gods as part of the social calendar.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The list of 64 arts that a cultured person should know.",
+          "The description of the daily life of the urban man (nagaraka), his house and his friends.",
+          "The advice for courtesans, which has the book’s most practical detail.",
+          "Vatsyayana’s closing remark that the text is for the study of the subject and not for indulgence.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Vatsyayana says he drew on older authors, such as Babhravya of Panchala and Auddalaki Shvetaketu, whose works are lost.",
+          "The oldest commentary is the Jayamangala by Yashodhara, from the 13th century CE.",
+          "The text was not much read in the medieval period, and returned to notice with Richard Burton’s 1883 translation.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It shaped later texts on the subject, such as Koka’s Ratirahasya, and the arts of love in Indian court life.",
+          "Temple sculpture of couples, as at Khajuraho, is sometimes linked to this tradition, though the connection is debated.",
+          "It is popularly known in the modern world mostly as a book about sex, a reading that cuts most of the text.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Wendy Doniger and Sudhir Kakar’s translation (Oxford, 2002) and Patrick Olivelle’s (Oxford, 2009) are the best modern English versions.",
+          "Read Part 1 first, since it sets out what the book thinks it is doing.",
+          "Do not read it as a statement of religious practice; it is a handbook for a social class and age.",
+        ],
+      },
+    ],
+    gods: ["kubera", "shiva"],
+  },
+
+  shrauta: {
+    glance: [
+      { label: "Class", value: "Kalpa Sutra: the Vedanga of ritual, public rites" },
+      { label: "Date", value: "c. 600–200 BCE" },
+      { label: "Language", value: "Late Vedic and early classical Sanskrit, in aphorisms" },
+      { label: "Main texts", value: "Apastamba, Baudhayana, Katyayana, Ashvalayana, Latyayana" },
+      { label: "Size", value: "Large; Apastamba’s Shrauta Sutra has 24 chapters" },
+      { label: "Companions", value: "The Grihya and Dharma Sutras of the same school" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Each Vedic school had its own Shrauta Sutra, which says how to carry out the rites “heard” (shruta) in the Veda.",
+          "They cover the simple fire rites (agnihotra, the new and full moon rites) and the great sacrifices (soma, horse sacrifice, royal consecration).",
+          "They list the priests, their duties, the order of acts, the mantras to say and the offerings to make.",
+          "The Agnichayana, the building of the fire altar from thousands of bricks in the shape of a bird, is described in detail.",
+          "They also say how to repair a rite that has gone wrong.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "A rite must be done exactly, since its effect depends on it being done correctly.",
+          "Each Veda has its own priests: the Hotri (Rigveda), Adhvaryu (Yajurveda), Udgatri (Samaveda) and Brahman (Atharvaveda).",
+          "The three sacred fires (garhapatya, ahavaniya and dakshinagni) are set up by a householder who wants to perform the rites.",
+          "The rites are the duty of a householder who has the means, and are done on behalf of a patron (yajamana).",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "These are rule-books, and say little about the gods themselves.",
+          "Agni, the fire, is the carrier of the offering, and Soma, Indra and the other Vedic gods receive the offerings.",
+          "Prajapati and Vishnu appear in the rites as the sacrifice itself, following the Brahmanas.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The soma sacrifice, in its stages of pressing and offering, is the model of the great rites.",
+          "The building of the fire altar is the most elaborate rite described.",
+          "Baudhayana’s Shrauta Sutra has the Sulba rules on altar geometry, which includes the “Pythagorean” rule.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "They were composed within each school, and each is named for its teacher.",
+          "They stand between the Brahmanas, which explain the rite, and the later law books.",
+          "Their style is the model for the grammar of Panini and for the later philosophical sutras.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "A small number of families in Kerala, Andhra and Maharashtra still perform these rites, in the form fixed here.",
+          "They gave Mimamsa its subject matter and the rules it uses to explain Vedic commands.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Frits Staal’s Agni: The Vedic Ritual of the Fire Altar (Berkeley, 1983) records the 1975 performance in Kerala.",
+          "Most Shrauta Sutras have no good complete English translation; Caland’s translations of Apastamba and Katyayana are the main ones.",
+        ],
+      },
+    ],
+    gods: ["agni", "soma", "prajapati", "indra"],
+  },
+  grihya: {
+    glance: [
+      { label: "Class", value: "Kalpa Sutra: household rites" },
+      { label: "Date", value: "c. 600–200 BCE" },
+      { label: "Language", value: "Late Vedic and early classical Sanskrit, in aphorisms" },
+      { label: "Main texts", value: "Ashvalayana, Paraskara, Apastamba, Gobhila, Gautama" },
+      { label: "Rites", value: "The samskaras, or life-cycle rites" },
+      { label: "Companions", value: "The Shrauta and Dharma Sutras of the same school" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The Grihya Sutras (“of the house”) set out the domestic rites, done at a single household fire instead of the three sacred fires.",
+          "They cover the rites of pregnancy, birth, naming, first feeding, the first haircut and the thread ceremony (upanayana), which begins Vedic study.",
+          "They give the rite of marriage, of building a house, and the daily and monthly offerings of a householder.",
+          "They end with the rites for the dead (antyeshti) and the offerings to ancestors (shraddha).",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Life is marked by sacraments (samskaras), each of which makes the person fit for the next stage.",
+          "The household fire is the centre of the home, and the daily offerings keep the household in order with gods, ancestors and spirits.",
+          "Marriage is a sacrament, made by the seven steps around the fire; the groom says that they walk together as friends.",
+          "The thread ceremony makes a boy “twice born” and a student of the Veda.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "The rites offer to Agni, Prajapati, Soma and the Vedic gods, as in the Shrauta Sutras.",
+          "They also make offerings to the ancestors, the directions, and to a wide range of spirits (bhutas), showing a world full of powers.",
+          "Some Grihya texts mention Rudra, Vishnu and the Goddess, a trace of the changing religion.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The seven steps (saptapadi) of the wedding, in a form still used.",
+          "The thread ceremony’s teaching of the Gayatri mantra.",
+          "The rite of the first feeding, naming and the first haircut of a child.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Each school of each Veda had its own Grihya Sutra, with Ashvalayana (Rigveda) and Paraskara (White Yajurveda) the most used today.",
+          "They were put in writing late, and are quoted by later law books.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "They are the base of the life-cycle rites performed by Hindus today, with local changes.",
+          "Hindu weddings, thread ceremonies and funerals still follow their outline.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Hermann Oldenberg’s Grihya Sutras (Sacred Books of the East, vols. 29 and 30) is the standard older translation.",
+          "Pandurang Vaman Kane’s History of Dharmasastra (vol. 2) describes the rites in detail.",
+        ],
+      },
+    ],
+    gods: ["agni", "prajapati", "soma"],
+  },
+  dharmasutras: {
+    glance: [
+      { label: "Class", value: "Kalpa Sutra: law and conduct" },
+      { label: "Date", value: "c. 600–200 BCE" },
+      { label: "Language", value: "Late Vedic and early classical Sanskrit, in aphorisms" },
+      { label: "Main texts", value: "Apastamba, Gautama, Baudhayana and Vasishtha" },
+      { label: "Oldest", value: "Gautama and Apastamba, probably" },
+      { label: "Companions", value: "The Shrauta and Grihya Sutras of the same school" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The Dharma Sutras give rules of conduct: the duties of each class and stage of life, purity, food, inheritance, crime and punishment, and penances.",
+          "Gautama’s is the oldest and shortest, with 28 chapters; Apastamba is in two parts of 11 chapters each; Baudhayana and Vasishtha are later.",
+          "Each lays out the four stages of life, the duties of the four classes, the king’s duties, the law of debt, marriage and inheritance.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Dharma means the customary rules of a community of those who know the Veda, drawn from the Veda, from tradition and from the conduct of the learned.",
+          "Life has four stages (ashramas): student, householder, forest-dweller and renouncer. Apastamba argues for the householder.",
+          "Four classes (varnas) have different duties and standards of purity. The rules often favour Brahmins in penalty and honour.",
+          "Penances (prayashchitta) are set for offences, to restore a person to the community.",
+          "The king must protect his people and give justice; his taxes and punishments are set out.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "They are law books, and say little about the gods; they assume the Vedic gods and rites.",
+          "Offerings to Agni, Prajapati and Soma appear in the rites they require.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "Apastamba’s remark that dharma and adharma do not go about saying “here we are”, so one must judge by what the learned approve.",
+          "Gautama’s early rules on law, procedure and the king’s duty.",
+          "Apastamba’s rule that a householder may set aside a rule of dharma if it is clearly against what is right.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Apastamba and Baudhayana are from the south (Andhra), Gautama is perhaps from the north.",
+          "They were composed within Vedic schools, and each is attached to one.",
+          "The Manusmriti and later law books are built on them and replace them as the main source.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "They are the base of the Dharmashastra tradition, the learned literature on law and conduct.",
+          "Colonial courts drew on this tradition when they set up “Hindu law”.",
+          "They stand behind the ideas of the four stages and four classes.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Patrick Olivelle’s Dharmasutras (Oxford World’s Classics, 1999) translates all four.",
+          "Georg Bühler’s older versions in the Sacred Books of the East (vols. 2 and 14) are in the public domain.",
+        ],
+      },
+    ],
+    gods: ["agni", "prajapati"],
+  },
+  'brahma-sutras': {
+    glance: [
+      { label: "Class", value: "Sutra: the Vedanta school’s founding text" },
+      { label: "Date", value: "c. 200 BCE–400 CE; the present form is probably late in that span" },
+      { label: "Language", value: "Classical Sanskrit, in aphorisms" },
+      { label: "Size", value: "About 555 sutras in four chapters" },
+      { label: "Author", value: "Badarayana, traditionally identified with Vyasa" },
+      { label: "Also called", value: "Vedanta Sutras or Shariraka Sutras" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Four chapters: samanvaya (harmony of the texts), avirodha (answers to objections), sadhana (the means) and phala (the fruit).",
+          "The first chapter shows that all the Upanishads point to Brahman as the cause of the world.",
+          "The second answers the objections of Samkhya, Buddhist, Jain and other schools.",
+          "The third and fourth discuss meditation and the self’s journey after death, and end with liberation.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Brahman is the origin, support and end of the world.",
+          "The Upanishads, though they seem to say different things, give one consistent teaching.",
+          "The self (atman) and Brahman are related in a way later schools read differently: as one (Shankara), as part and whole (Ramanuja), or as distinct (Madhva).",
+          "Knowledge of Brahman, not ritual, is the way to liberation.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "Brahman is the one cause of the world, and the gods of the Vedas are its forms or servants.",
+          "Ishvara, as the personal form of Brahman, creates and rules the world in the readings of Ramanuja and others.",
+          "It argues against the Samkhya view that matter alone, without a conscious cause, makes the world.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The opening, “athato brahma-jijnasa”: “now, therefore, the inquiry into Brahman”.",
+          "The second sutra, “janmady asya yatah”: Brahman is that from which the birth, support and end of the world come.",
+          "The argument that the world comes from a conscious Brahman and not from matter (chapter 2).",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "The sutras are so compressed that they are nearly unintelligible alone, so commentaries were needed.",
+          "Shankara (8th century CE), Ramanuja (11th), Madhva (13th), Nimbarka and Vallabha each wrote one, founding different schools of Vedanta.",
+          "The text was probably put together over centuries, in dialogue with Buddhists and Jains.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "With the Upanishads and the Gita, it is one of the three “sources” (prasthana-traya) of Vedanta, so all later Vedanta begins with commentary on it.",
+          "Much of the history of Hindu philosophy is a history of readings of this one text.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "George Thibaut’s translation with Shankara’s commentary is in the public domain (Sacred Books of the East, vols. 34 and 38).",
+          "Swami Gambhirananda’s Brahma-Sutra-Bhashya of Shankara (Advaita Ashrama) is widely available.",
+        ],
+      },
+    ],
+    gods: ["brahman"],
+  },
+  'yoga-sutras': {
+    glance: [
+      { label: "Class", value: "Sutra: the founding text of classical Yoga" },
+      { label: "Date", value: "c. 200–400 CE; some scholars place it earlier, about 200 BCE" },
+      { label: "Language", value: "Classical Sanskrit, in aphorisms" },
+      { label: "Size", value: "196 sutras in four chapters (padas)" },
+      { label: "Author", value: "Patanjali, whose identity is uncertain" },
+      { label: "Commentary", value: "Vyasa’s Bhashya (about the 5th century CE)" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Chapter 1, Samadhi Pada, defines yoga and describes concentration and the kinds of absorption.",
+          "Chapter 2, Sadhana Pada, gives the practice: the afflictions (kleshas) and the first five of the eight limbs.",
+          "Chapter 3, Vibhuti Pada, covers the last three limbs and the powers that come from them.",
+          "Chapter 4, Kaivalya Pada, covers liberation, the isolation of the seer from nature.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Yoga is the stilling of the movements of the mind (chitta-vritti-nirodha), so that the seer rests in its own nature (1.2–3).",
+          "The eight limbs are restraints (yama), observances (niyama), posture (asana), breath control (pranayama), withdrawal of the senses (pratyahara), concentration (dharana), meditation (dhyana) and absorption (samadhi).",
+          "The five afflictions are ignorance, ego, attachment, aversion and fear of death.",
+          "It uses the Samkhya scheme of matter and many selves, and adds a discipline and God.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "Ishvara is a special self, untouched by suffering, action and its results, and the teacher of the first teachers (1.23–26).",
+          "His sign is the syllable Om, and meditating on him is one way to samadhi.",
+          "This is a small part of the text; the system is mostly about the mind, and does not need God.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "“yogash chitta-vritti-nirodhah” (1.2), the definition of yoga in four words.",
+          "The list of the eight limbs (2.29).",
+          "The list of the obstacles and the afflictions (kleshas).",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Patanjali is traditionally the same as the grammarian of that name, but most scholars doubt this.",
+          "Vyasa’s Bhashya is the main early commentary and may be as old as the sutras.",
+          "The text was put in its present form by about 400 CE.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It became the base of modern yoga after Vivekananda and later teachers, though modern posture yoga has little basis in the text, which mentions asana only briefly.",
+          "It is read worldwide, and is among the most translated Hindu texts.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Edwin Bryant’s The Yoga Sutras of Patanjali (North Point Press, 2009) has the text with the classical commentaries.",
+          "Swami Satchidananda’s The Yoga Sutras of Patanjali (Integral Yoga) is a popular edition.",
+        ],
+      },
+    ],
+    gods: [],
+  },
+  ashtadhyayi: {
+    glance: [
+      { label: "Class", value: "Vedanga: grammar (vyakarana)" },
+      { label: "Date", value: "c. 500–300 BCE; traditionally the 4th century BCE" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 4,000 rules in eight chapters" },
+      { label: "Author", value: "Panini, traditionally from Shalatura in the north-west" },
+      { label: "Place", value: "North-west India" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The name means “eight chapters”. Each has four sections, giving the 32 sections of the work.",
+          "It begins with a list of sounds arranged in fourteen lines, the Maheshvara Sutras, said to come from the drum of Shiva.",
+          "It gives rules to build every correct Sanskrit word from roots and endings, covering sound change, compounds, case and verb endings.",
+          "It uses a technical language of its own, with markers and short labels, so that very short rules can do much.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "The language is a closed system: a few rules and a list of roots make the whole of it.",
+          "Rules are ordered, with exceptions and general rules, and the system avoids repeating itself.",
+          "It treats the language of the Vedas as an older form, and gives special rules for it.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "It is a technical work and has no theology.",
+          "The Maheshvara Sutras, the opening list of sounds, are said in tradition to have come from Shiva’s drum, which is an early mention of this connection.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The first rule, “vriddhir adaic”.",
+          "The Maheshvara Sutras, with the legend of Shiva’s drum.",
+          "The idea of a “zero” element in the grammar (lopa), which scholars compare with a zero in mathematics.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Katyayana added corrections (vartikas) in the 3rd century BCE and Patanjali the grammarian explained and defended it in the Mahabhashya (about the 2nd century BCE).",
+          "The three together, “the three sages” (munitraya), are the authorities of Sanskrit grammar.",
+          "It was passed on orally, and has been kept with great accuracy.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It fixed classical Sanskrit, so that texts of all later Hindu traditions can be read with the same grammar.",
+          "It has been called one of the great intellectual works of the ancient world, and modern linguists and computer scientists have studied it.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Sumitra Katre’s Astadhyayi of Panini (Texas, 1987) and Rama Nath Sharma’s six-volume edition (Munshiram Manoharlal) are the main translations.",
+          "George Cardona’s Panini: A Survey of Research (1976) is a standard guide.",
+        ],
+      },
+    ],
+    gods: ["shiva"],
+  },
+  chandahsutra: {
+    glance: [
+      { label: "Class", value: "Vedanga: metre (chandas)" },
+      { label: "Date", value: "c. 300–200 BCE; some place it later" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 8 chapters" },
+      { label: "Author", value: "Pingala, traditionally a younger brother of Panini" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "It gives the rules of Vedic metre (such as the Gayatri, Anushtubh and Trishtubh) and of the later classical metres.",
+          "It uses short and long syllables, and groups them into feet and lines.",
+          "It includes a method for listing all the possible patterns of a given length.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Metre is one of the limbs of the Veda, needed to recite a hymn correctly.",
+          "Each Vedic metre has a set count of syllables, and gods and metres are paired in tradition: Agni with the Gayatri, Indra with the Trishtubh.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "It is technical, and has no theology.",
+          "It matters because the Vedic hymns to the gods are bound to their metres.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The method for counting patterns, which is related to the binary system and to what is now called Pascal’s triangle.",
+          "The list of the seven main Vedic metres.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "The text is traditionally by Pingala, and was explained by Halayudha (10th century CE) in a commentary.",
+          "It is a late Vedanga, and shows signs of later additions.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "Its rules were used for all classical Sanskrit poetry.",
+          "Its counting method is cited in the history of mathematics.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Few English translations exist; Kedarnath’s Chhandahshastra of Pingala (Bombay, 1938) gives the text with commentary.",
+          "Histories of Indian mathematics, such as those by Bibhutibhushan Datta, discuss the counting method.",
+        ],
+      },
+    ],
+    gods: ["agni", "indra"],
+  },
+  nirukta: {
+    glance: [
+      { label: "Class", value: "Vedanga: etymology (nirukta)" },
+      { label: "Date", value: "c. 600–400 BCE" },
+      { label: "Language", value: "Late Vedic Sanskrit, in prose" },
+      { label: "Size", value: "12 chapters, with 2 added" },
+      { label: "Author", value: "Yaska" },
+      { label: "Based on", value: "The Nighantu, a list of Vedic words" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "It is a commentary on the Nighantu, a list of difficult words in the Vedas arranged in groups.",
+          "Its first chapters set out its method; the later ones go through the words and verses.",
+          "The last chapters cover the gods of the Vedas, arranged by realm.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Words can be explained from their roots; this method shows what a word means and so what a hymn says.",
+          "Yaska quotes earlier scholars who disagreed about how to read the Veda, which shows there was already a long tradition of debate.",
+          "He holds that the mantras have meaning, against those who say they are only sounds.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "Yaska divides the gods into three realms: Agni of earth, Vayu or Indra of the air, and Surya of the sky.",
+          "He records that some read the gods as one divine power with many names, which later grows into the Upanishadic and Puranic views.",
+          "He also records the dispute over whether a Vedic god is a person or a natural force, which shaped later ideas.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The statement that the three realms each have a chief god.",
+          "The discussion of whether the gods have a human form.",
+          "The famous statement that a pillar (sthanu) that does not see the meaning of a word only carries the load.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "Yaska is placed before Panini, who knows of him.",
+          "Durga’s commentary (about the 12th century CE) is the main later one.",
+          "Lakshman Sarup’s edition and English translation (Oxford, 1920–27) is the standard.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It is the starting point for Indian ideas about the meaning of words and the reading of the Veda.",
+          "Its view of the gods in three realms shaped later Vedic scholarship.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Lakshman Sarup’s The Nighantu and the Nirukta (Delhi, 1967 reprint) is the English translation.",
+        ],
+      },
+    ],
+    gods: ["agni", "vayu", "indra", "surya"],
   },
 };

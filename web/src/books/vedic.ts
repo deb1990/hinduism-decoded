@@ -346,7 +346,7 @@ export const BOOKS_VEDIC: Record<string, BookDetail> = {
       { label: 'Language', value: 'Late Vedic Sanskrit, in prose' },
       { label: 'Main texts', value: 'Aitareya, Kaushitaki, Panchavimsha, Shatapatha, Taittiriya, Gopatha' },
       { label: 'Size', value: 'The Shatapatha alone has 100 sections in 14 books' },
-      { label: 'Companions', value: 'The Aranyakas, forest texts, and the early Upanishads' },
+      { label: 'Companions', value: 'The Aranyakas, forest texts, and then the early Upanishads' },
     ],
     sections: [
       {
@@ -356,7 +356,7 @@ export const BOOKS_VEDIC: Record<string, BookDetail> = {
           'They set out the sequence of a rite, give the reason for each act, quote the mantras to be used, and tell myths that explain the rite’s origin.',
           'The Shatapatha Brahmana, “of a hundred paths”, belongs to the White Yajurveda and is the largest and most important.',
           'Much of the material is a kind of discussion among priests, with rival views on a point of ritual, and a ruling.',
-          'The Aranyakas, “forest books”, are attached to the Brahmanas and deal with the inner and esoteric meaning of the rites, to be learned in the forest.',
+          'The Aranyakas, “forest books”, which follow the Brahmanas and deal with the inner meaning of the rites, have their own entry on this site.',
         ],
       },
       {
@@ -509,5 +509,75 @@ export const BOOKS_VEDIC: Record<string, BookDetail> = {
       },
     ],
     gods: ['brahman', 'thirty3', 'sanatkumara', 'narada', 'yama', 'prajapati', 'shiva', 'brahma'],
+  },
+
+  aranyakas: {
+    glance: [
+      { label: "Class", value: "Shruti: the “forest books”, between the Brahmanas and the Upanishads" },
+      { label: "Date", value: "c. 800–500 BCE" },
+      { label: "Language", value: "Late Vedic Sanskrit, in prose" },
+      { label: "Main texts", value: "Aitareya, Kaushitaki, Taittiriya and Brihadaranyaka" },
+      { label: "Attached to", value: "Each belongs to a Veda and often to its Brahmana" },
+      { label: "Many contain", value: "Upanishads, as their last parts" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "Each Veda’s school has its own Aranyakas, usually attached to the end of a Brahmana or placed just after it.",
+          "The Aitareya and Kaushitaki Aranyakas belong to the Rigveda, the Taittiriya Aranyaka to the Black Yajurveda, and the Brihadaranyaka to the White Yajurveda.",
+          "They deal with rites that were thought too dangerous or too inward for the village, such as the Mahavrata and the Pravargya, and were to be learned in the forest.",
+          "Several end with Upanishads: the Aitareya Upanishad is in the Aitareya Aranyaka, the Taittiriya Upanishad in the Taittiriya Aranyaka, and the Brihadaranyaka Upanishad is the last part of its own Aranyaka.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "The rite is turned inward: instead of doing the sacrifice outside, the student meditates on it, and the offering becomes breath and speech.",
+          "The Aitareya Aranyaka compares the parts of the rite to the parts of the person and the cosmos.",
+          "Knowing what the rite means is held to be as powerful as doing it, or more.",
+          "Breath (prana) is the central principle, and the senses are the gods within the body.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "The gods are seen within the person: the fire is speech, the wind is breath, the sun is the eye.",
+          "Prajapati remains the creator, and the one who is the sacrifice.",
+          "The step from many outer gods to one inner principle is made here, which leads to the Upanishads.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The Mahavrata rite and its inner meaning in the Aitareya Aranyaka.",
+          "The Pravargya, with its hot milk offering, in the Taittiriya Aranyaka.",
+          "The Brihadaranyaka, whose teaching of Yajnavalkya on the self is among the best known in Indian thought.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "They are later than the Brahmanas in the main, and earlier than most Upanishads.",
+          "Their date is not firm, and the line between an Aranyaka and an Upanishad is not sharp.",
+          "Arthur Berriedale Keith’s translation of the Aitareya Aranyaka (Oxford, 1909) is the standard English version.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "They are the link between ritual and philosophy: the Upanishads grew out of them.",
+          "The “forest” stage of life (vanaprastha) is later tied to the study of these texts.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "A. B. Keith’s The Aitareya Aranyaka (Oxford, 1909) gives the text and a translation.",
+          "Most readers meet them through the Upanishads that end them, such as the Brihadaranyaka and Taittiriya.",
+        ],
+      },
+    ],
+    gods: ["prajapati", "agni", "vayu", "surya"],
   },
 };

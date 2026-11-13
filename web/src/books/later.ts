@@ -521,4 +521,204 @@ export const BOOKS_LATER: Record<string, BookDetail> = {
     ],
     gods: ['rama', 'vishnu', 'shiva', 'lakshmi'],
   },
+
+  'shiva-sutras': {
+    glance: [
+      { label: "Class", value: "Agama: the root text of Kashmir Shaivism" },
+      { label: "Date", value: "c. 800–900 CE" },
+      { label: "Language", value: "Sanskrit, in very short aphorisms" },
+      { label: "Size", value: "77 sutras in three chapters, in some counts 79" },
+      { label: "Author", value: "Vasugupta, according to tradition; he is said to have received it from Shiva" },
+      { label: "Place", value: "Kashmir" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The tradition says Shiva appeared to Vasugupta in a dream and told him of the sutras carved on a rock on Mount Mahadeva, near Srinagar.",
+          "The three chapters are called the means of Shiva (shambhavopaya), the means of Shakti (shaktopaya) and the means of the individual (anavopaya).",
+          "Each chapter gives a different route to the same goal: from the most direct awareness to the slowest practice of breath and mantra.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "The first sutra is “chaitanyam atma”: the self is consciousness.",
+          "The world is not unreal but the free play of one conscious reality, which is Shiva, shown as many.",
+          "Bondage comes from forgetting what one is, and liberation is recognition (pratyabhijna) of one’s own nature as Shiva.",
+          "The sutras mention the mantra, the guru and the body as supports for the practice, but hold that the final step is a direct awareness.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "There is one ultimate reality, Shiva, as pure consciousness; the many gods are its powers.",
+          "Shakti, the power of Shiva, is not a separate goddess but his own freedom and activity.",
+          "It shows Shiva as the self of the person, in a way close to Advaita but with a real, living world.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The opening “consciousness is the self”.",
+          "The story of the sutras found carved on a rock, which gives the text its sacred origin.",
+          "The Spanda Karika, a companion poem on the “pulsation” of consciousness, is by Vasugupta or his pupil Kallata.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "The text is the base of the Trika school, and its commentaries are by Kshemaraja (11th century CE).",
+          "Abhinavagupta (c. 1000 CE) wrote the greatest works of this school, such as the Tantraloka, out of this tradition.",
+          "It is a Shaiva text in the Agama tradition, though it is closer to philosophy than to temple rite.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It shaped Kashmir Shaivism, and through it ideas of beauty and aesthetics in Indian poetics.",
+          "Modern teachers such as Swami Lakshman Joo brought it to wider readers in the twentieth century.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "Jaideva Singh’s Siva Sutras: The Yoga of Supreme Identity (Motilal, 1979) gives a translation with Kshemaraja’s commentary.",
+          "Mark Dyczkowski’s The Doctrine of Vibration (SUNY, 1987) is the standard scholarly study.",
+        ],
+      },
+    ],
+    gods: ["shiva", "durga"],
+  },
+
+  'narada-bhakti': {
+    glance: [
+      { label: "Class", value: "Sutra: aphorisms on devotion" },
+      { label: "Date", value: "c. 900–1200 CE; debated" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "84 sutras" },
+      { label: "Author", value: "Narada, by tradition; the real author is unknown" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "It opens by defining bhakti, then goes on to its nature, means, obstacles and fruit.",
+          "It lists eleven forms of love for God, drawn from the Bhagavata Purana, such as hearing, singing, remembering and serving.",
+          "It ends with the praise of devotees and the way of devotion.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Bhakti is defined as supreme love for God (“sa tv asmin parama-prema-rupa”, sutra 2) and as nectar.",
+          "Devotion is higher than action, knowledge and yoga, because it is its own fruit.",
+          "It is open to all, without regard to caste, learning or birth.",
+          "It warns against company that harms devotion, and advises the company of holy people.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "It is about one personal God, and says little about which one; later readers take it as Vaishnava.",
+          "The gopis of Vraj, who love Krishna beyond all duty, are held up as the best example of devotion.",
+          "God is not an abstract principle but someone to be loved.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The definition of bhakti in the second sutra.",
+          "The list of eleven forms of love.",
+          "The passage on the gopis as devotees.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "It is named for the sage Narada, whose place in the Puranas and the Bhagavata made him the patron of devotion.",
+          "The date is uncertain; some place it before the 10th century, others as late as the 12th.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It fed the bhakti movement’s teachings on love and equality in devotion.",
+          "It is often printed with the Bhagavata and Gita as a short statement of the devotional path.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "The Narada Bhakti Sutras with commentary by Swami Tyagisananda (Ramakrishna Math) is widely available.",
+          "Read it with the Bhagavata Purana, which is its source.",
+        ],
+      },
+    ],
+    gods: ["krishna", "vishnu", "narada"],
+  },
+  'shandilya-bhakti': {
+    glance: [
+      { label: "Class", value: "Sutra: aphorisms on devotion" },
+      { label: "Date", value: "c. 900–1200 CE; debated" },
+      { label: "Language", value: "Sanskrit, in sutra form" },
+      { label: "Size", value: "About 100 sutras in three chapters" },
+      { label: "Author", value: "Shandilya, by tradition; the real author is unknown" },
+      { label: "Place", value: "Not known" },
+    ],
+    sections: [
+      {
+        title: "Structure and contents",
+        points: [
+          "The text is in three chapters, each of about thirty to forty sutras.",
+          "The first defines bhakti and compares it with knowledge; the second discusses its means; the third its kinds and fruit.",
+        ],
+      },
+      {
+        title: "Key teachings and ideas",
+        points: [
+          "Bhakti is “supreme attachment to God” (“sa para anuraktir ishvare”).",
+          "It argues that knowledge alone does not give liberation, and that devotion is its own end.",
+          "It reads the Upanishads and the Gita as supporting devotion.",
+        ],
+      },
+      {
+        title: "What it says about the gods",
+        points: [
+          "It speaks of Ishvara, a personal God, as the object of bhakti, and is read in Vaishnava terms.",
+          "It treats devotion to God’s forms as an aid, not an obstacle.",
+        ],
+      },
+      {
+        title: "Famous passages and stories",
+        points: [
+          "The opening definition of bhakti.",
+          "The argument against the view that knowledge alone is enough.",
+        ],
+      },
+      {
+        title: "Composition, language and transmission",
+        points: [
+          "It is often paired with Narada’s text, and is similar in time and spirit.",
+          "The date and author are uncertain, and the commentary by Svapneshvara is later.",
+        ],
+      },
+      {
+        title: "Later influence",
+        points: [
+          "It is used by Vaishnava teachers as a source for the theory of devotion.",
+          "With Narada’s sutras, it gave the bhakti movement a short theoretical base.",
+        ],
+      },
+      {
+        title: "Reading it today",
+        points: [
+          "E. B. Cowell’s translation, The Aphorisms of Shandilya (Calcutta, 1878), is old but available.",
+          "Read it with the Narada Bhakti Sutra.",
+        ],
+      },
+    ],
+    gods: ["krishna", "vishnu"],
+  },
 };
