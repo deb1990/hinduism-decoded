@@ -157,7 +157,7 @@ export const CHARTS: ChartDef[] = [
   {
     id: 'shakta',
     tab: 'Shakta view',
-    title: 'Devi Mahatmya: the Goddess as the supreme power',
+    title: 'Markandeya Purana: the Goddess as the supreme power',
     period: 'c. 500–600 CE',
     concept:
       'Another change of concept: the Goddess is the ultimate reality and the gods act through her. Tradition reads her three great deeds as three forms. The Seven Mothers are the powers of the male gods who come to her aid.',

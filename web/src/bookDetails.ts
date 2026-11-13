@@ -27,7 +27,7 @@ export const BOOK_ART: Record<string, { motif: Motif; hue: number }> = {
   mahabharata: { motif: 'wheel', hue: 40 },
   gita: { motif: 'dharma', hue: 50 },
   puranas: { motif: 'lotus', hue: 140 },
-  devimahatmya: { motif: 'yantra', hue: 5 },
+  markandeya: { motif: 'sun', hue: 38 },
   agamas: { motif: 'trident', hue: 205 },
   'tamil-bhakti': { motif: 'strings', hue: 172 },
   bhagavata: { motif: 'flute', hue: 232 },

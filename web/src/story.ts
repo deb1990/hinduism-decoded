@@ -39,7 +39,7 @@ export const GOD_CHAPTERS: ChapterDef[] = [
     id: 'shakta', chartId: 'shakta', art: 'yantra', accent: '#ff6b81', deep: '#16050c',
     kicker: 'Chapter 4 · c. 500–600 CE',
     title: 'The Goddess takes the throne',
-    lede: 'In the Devi Mahatmya the ultimate power is a woman, and the gods act through her.',
+    lede: 'In the Markandeya Purana, in the section called the Devi Mahatmya, the ultimate power is a woman, and the gods act through her.',
   },
 ];
 

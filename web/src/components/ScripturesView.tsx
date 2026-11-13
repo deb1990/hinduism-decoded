@@ -18,7 +18,7 @@ const GODS_PATH_EN = {
     { title: 'Vedas', text: 'Name the earliest gods: Indra, Agni, Varuna, Soma.' },
     { title: 'Upanishads', text: 'Shift from many gods to one ultimate reality, Brahman.' },
     { title: 'Epics', text: 'Make Rama and Krishna avatars of Vishnu; Krishna speaks the Gita.' },
-    { title: 'Puranas', text: 'Fix the gods as most Hindus know them, with the Goddess made supreme in the Devi Mahatmya.' },
+    { title: 'Puranas', text: 'Fix the gods as most Hindus know them, with the Goddess made supreme in the Markandeya Purana.' },
   ],
 };
 
