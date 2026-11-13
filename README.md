@@ -16,6 +16,8 @@ Three kinds of page, each with a full-screen intro over parallax artwork:
 - **A page for each book** (`#/book/rigveda`). Full screen, with a long point-by-point explanation: facts at a glance, structure and contents, key teachings, what it says about the gods, famous passages, composition and transmission, later influence, and how to read it today.
 - **Eras.** The eras of Hinduism from the Indus Valley to today, with key texts, ideas and people.
 
+The site is available in English, Hindi and Bengali (the globe button in the lower right corner). The interface, labels, god names and summaries, book summaries, era text and chart labels are translated; the long god and book pages are still English only. The translations were written by an AI model and have not been reviewed by a native speaker or a scholar.
+
 Pages use hash routes (`#/books`, `#/eras`, `#/god/<id>`), so the site works on any static host.
 
 ## Content status
@@ -39,6 +41,7 @@ npm run build      # static site in web/dist
 | File | Contents |
 | --- | --- |
 | `web/src/gods.ts`, `web/src/godsMore.ts` | Each god: books, dates and notes, in order |
+| `web/src/i18n/` | The language system: English strings, and the Hindi (`hi.ts`) and Bengali (`bn.ts`) translations |
 | `web/src/stories.ts`, `web/src/stories/` | The long text on each god's page |
 | `web/src/bookDetails.ts`, `web/src/books/` | The long point-by-point text on each book's page |
 | `web/src/godArt.ts`, `web/src/components/GodArt.tsx` | Which artwork and colour each god gets, and the 34 motifs |

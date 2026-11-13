@@ -1,5 +1,6 @@
 import { ERAS } from '../data';
 import { useActiveSection } from '../hooks';
+import { useI18n } from '../i18n';
 import Chapter from '../components/Chapter';
 import EraCard from '../components/EraCard';
 import EraRail from '../components/EraRail';
@@ -8,11 +9,12 @@ import PageLinks from '../components/PageLinks';
 const ERA_IDS = ERAS.map((e) => e.id);
 
 function ErasTimeline() {
+  const { t } = useI18n();
   const activeId = useActiveSection(ERA_IDS);
   return (
     <>
       <EraRail eras={ERAS} activeId={activeId} />
-      <div className="timeline" aria-label="Timeline of Hinduism">
+      <div className="timeline" aria-label={t('eras.timeline')}>
         {ERAS.map((era) => <EraCard key={era.id} era={era} />)}
       </div>
     </>
@@ -20,12 +22,13 @@ function ErasTimeline() {
 }
 
 export default function ErasPage() {
+  const { t } = useI18n();
   return (
     <>
       <Chapter
         id="eras" art="rings" accent="#e8b07a" deep="#120d08"
-        kicker="The eras" title="Five thousand years, in nine steps"
-        lede="From the Indus Valley to today: the key texts, ideas and people of each era."
+        kicker={t('eras.kicker')} title={t('eras.title')}
+        lede={t('eras.lede')}
       >
         <ErasTimeline />
       </Chapter>

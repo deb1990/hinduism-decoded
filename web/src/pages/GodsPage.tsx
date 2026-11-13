@@ -2,6 +2,8 @@ import type { CSSProperties } from 'react';
 import { CHARTS } from '../charts';
 import { GOD_CHAPTERS, godsFor, type ChapterDef } from '../story';
 import { useActiveSection, useParallax } from '../hooks';
+import { useI18n } from '../i18n';
+import type { UiKey } from '../i18n/en';
 import Art from '../components/Art';
 import Chapter from '../components/Chapter';
 import PageLinks from '../components/PageLinks';
@@ -9,17 +11,18 @@ import { ChartPanel } from '../components/GodsCharts';
 import GodTile from '../components/GodTile';
 import { Matrix } from '../components/GodsView';
 
-const NAV = [
-  { id: 'top', label: 'Start' },
-  { id: 'vedic', label: 'Vedic gods' },
-  { id: 'upanishads', label: 'Upanishads' },
-  { id: 'puranic', label: 'Epics and Puranas' },
-  { id: 'shakta', label: 'The Goddess' },
-  { id: 'atlas', label: 'Atlas' },
+const NAV: { id: string; key: UiKey }[] = [
+  { id: 'top', key: 'side.start' },
+  { id: 'vedic', key: 'side.vedic' },
+  { id: 'upanishads', key: 'side.upanishads' },
+  { id: 'puranic', key: 'side.puranic' },
+  { id: 'shakta', key: 'side.shakta' },
+  { id: 'atlas', key: 'side.atlas' },
 ];
 const NAV_IDS = NAV.map((n) => n.id);
 
 function Landing() {
+  const { t } = useI18n();
   const ref = useParallax<HTMLElement>();
   return (
     <section id="top" ref={ref} className="landing" style={{ '--a': '#ff9a3c' } as CSSProperties}>
@@ -27,18 +30,14 @@ function Landing() {
       <div className="landing-inner">
         <h1>
           <span className="word">
-            Hinduism<sup className="power">decoded</sup>
+            {t('brand.name')}<sup className="power">{t('brand.decoded')}</sup>
           </span>
         </h1>
         <p className="tagline">
-          The world’s oldest living religion,<br />and one of the most misunderstood
+          {t('landing.tagline1')}<br />{t('landing.tagline2')}
         </p>
-        <p className="landing-lede">
-          Hinduism is often described as the oldest religion still practised. It has no single founder, book or church,
-          so it looks fragmented and is easy to misread. This is an attempt to connect the dots: which book defined
-          which god, and when.
-        </p>
-        <a className="cta" href="#vedic">Begin the story</a>
+        <p className="landing-lede">{t('landing.lede')}</p>
+        <a className="cta" href="#vedic">{t('landing.cta')}</a>
       </div>
       <span className="scroll-hint" aria-hidden="true" />
     </section>
@@ -46,14 +45,16 @@ function Landing() {
 }
 
 function GodChapter({ def }: { def: ChapterDef }) {
+  const { t, chapter } = useI18n();
   const chart = CHARTS.find((c) => c.id === def.chartId);
   const gods = godsFor(def.id);
+  const c = chapter(def.id, { kicker: def.kicker, title: def.title, lede: def.lede });
   return (
-    <Chapter id={def.id} kicker={def.kicker} title={def.title} lede={def.lede} art={def.art} accent={def.accent} deep={def.deep}>
+    <Chapter id={def.id} kicker={c.kicker} title={c.title} lede={c.lede} art={def.art} accent={def.accent} deep={def.deep}>
       <div className="body-inner">
         {chart && <ChartPanel chart={chart} />}
-        <h3 className="cards-title">The gods in this chapter</h3>
-        <p className="note">Open a god for a full page: the long story, the books that define them, and how they are worshipped.</p>
+        <h3 className="cards-title">{t('gods.inChapter')}</h3>
+        <p className="note">{t('gods.openHint')}</p>
         <div className="tiles">
           {gods.map((g) => <GodTile key={g.id} god={g} />)}
         </div>
@@ -63,12 +64,13 @@ function GodChapter({ def }: { def: ChapterDef }) {
 }
 
 function SideNav() {
+  const { t } = useI18n();
   const active = useActiveSection(NAV_IDS);
   return (
-    <nav className="sidenav" aria-label="Sections on this page">
+    <nav className="sidenav" aria-label={t('nav.sections')}>
       {NAV.map((n) => (
-        <a key={n.id} href={`#${n.id}`} className={n.id === active ? 'active' : undefined} aria-label={n.label}>
-          <span>{n.label}</span>
+        <a key={n.id} href={`#${n.id}`} className={n.id === active ? 'active' : undefined} aria-label={t(n.key)}>
+          <span>{t(n.key)}</span>
         </a>
       ))}
     </nav>
@@ -76,6 +78,7 @@ function SideNav() {
 }
 
 export default function GodsPage() {
+  const { t } = useI18n();
   return (
     <>
       <SideNav />
@@ -84,8 +87,8 @@ export default function GodsPage() {
 
       <Chapter
         id="atlas" art="lotus" accent="#4cc3d9" deep="#04131a"
-        kicker="The atlas" title="Where each god appears"
-        lede="Every god against every book group, in order of composition. The large dot marks where a god is defined."
+        kicker={t('atlas.kicker')} title={t('atlas.title')}
+        lede={t('atlas.lede')}
       >
         <div className="body-inner">
           <Matrix />

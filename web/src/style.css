@@ -11,8 +11,8 @@
   --mid: #f0c05a;
   --lo: #ff8a78;
   --shadow: 0 12px 40px rgba(0, 0, 0, .45);
-  --serif: "Cinzel", "Iowan Old Style", Georgia, serif;
-  --sans: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: "Cinzel", "Noto Serif Devanagari", "Noto Serif Bengali", "Iowan Old Style", Georgia, serif;
+  --sans: "Lato", "Noto Sans Devanagari", "Noto Sans Bengali", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -634,3 +634,44 @@ body { overflow-x: hidden; }
 .tl-out { position: absolute; top: 15px; font: 500 12px/1.2 var(--sans); font-style: normal; color: var(--muted); white-space: nowrap; }
 @media (max-width: 860px) { .tl-name { font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .tl-bar { transform: scaleX(1); transition: none; } }
+
+/* =========================================================
+   Languages: switcher, notice, and Hindi and Bengali typography
+   ========================================================= */
+.panel.notice { border-color: color-mix(in srgb, var(--a) 45%, transparent); background: color-mix(in srgb, var(--a) 10%, rgba(14, 11, 9, .64)); }
+.notice p { margin: 0; font-size: 15px; color: #e4d8c6; }
+
+/* Letter-spacing and capitals break Devanagari and Bengali shaping, so switch them off */
+html[lang="hi"] *, html[lang="bn"] * { letter-spacing: normal !important; text-transform: none !important; }
+html[lang="hi"] body, html[lang="bn"] body { line-height: 1.8; }
+html[lang="hi"] .chapter-title, html[lang="bn"] .chapter-title,
+html[lang="hi"] .landing h1, html[lang="bn"] .landing h1 { line-height: 1.25; font-weight: 700; }
+html[lang="hi"] .tile-name, html[lang="bn"] .tile-name,
+html[lang="hi"] .godnav-link strong, html[lang="bn"] .godnav-link strong,
+html[lang="hi"] .pagelink-label, html[lang="bn"] .pagelink-label { font-weight: 700; }
+html[lang="hi"] .landing h1 .power, html[lang="bn"] .landing h1 .power { font-size: clamp(14px, 1.6vw, 22px); }
+
+
+/* The language picker: a floating globe button in the lower right corner */
+.langswitch { position: fixed; right: 18px; bottom: 18px; z-index: 80; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.langbtn {
+  display: inline-flex; align-items: center; gap: 9px; height: 46px; padding: 0 18px 0 14px; border-radius: 999px; cursor: pointer;
+  font: 700 14px/1 var(--sans); color: var(--ink); background: rgba(14, 11, 9, .82);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .18); box-shadow: 0 8px 28px rgba(0, 0, 0, .5); transition: border-color .2s, transform .2s;
+}
+.langbtn:hover { border-color: var(--accent); transform: translateY(-2px); }
+.langbtn svg { color: var(--accent); flex: none; }
+.langmenu {
+  list-style: none; margin: 0; padding: 6px; min-width: 170px; border-radius: 18px;
+  background: rgba(14, 11, 9, .92); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 14px 40px rgba(0, 0, 0, .55);
+}
+.langmenu button {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; padding: 11px 14px; border: 0; border-radius: 12px; cursor: pointer;
+  font: 600 15px/1.2 var(--sans); color: var(--ink); background: transparent; text-align: left;
+}
+.langmenu button:hover { background: rgba(255, 255, 255, .08); }
+.langmenu button.active { color: var(--accent); }
+@media (max-width: 640px) { .langswitch { right: 12px; bottom: 12px; } .langbtn { height: 42px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .langbtn { transition: none; } .langbtn:hover { transform: none; } }

@@ -3,6 +3,7 @@ import type { ChartDef, GNode } from '../charts';
 import { STAGES, type StageId } from '../gods';
 import { useReveal } from '../hooks';
 import { godHref } from '../route';
+import { useI18n, type I18n } from '../i18n';
 
 const W = 940;
 const PAD = 24;
@@ -27,25 +28,37 @@ interface Placed extends GNode {
   chipW: number;
 }
 
-function sizeOf(n: GNode): Pick<Placed, 'w' | 'h' | 'hdr' | 'cols' | 'chipW'> {
-  const subW = (n.sub?.length ?? 0) * 5.9 + 32;
+/** The chart with its labels in the reader's language. Positions are worked out from the translated text. */
+function localize(chart: ChartDef, i18n: I18n): ChartDef {
+  if (i18n.lang === 'en') return chart;
+  return {
+    ...chart,
+    nodes: chart.nodes.map((n) => {
+      const l = i18n.node(n.id, n);
+      return { ...n, label: l.label, sub: l.sub, members: n.members?.map((m) => ({ ...m, label: i18n.member(n.id, m.label) })) };
+    }),
+  };
+}
+
+function sizeOf(n: GNode, k: number): Pick<Placed, 'w' | 'h' | 'hdr' | 'cols' | 'chipW'> {
+  const subW = (n.sub?.length ?? 0) * 5.9 * k + 32;
   if (n.members) {
     const cols = n.cols ?? 2;
     const chipW = (n.chipW ?? 84) + 8;
     const rows = Math.ceil(n.members.length / cols);
     const hdr = n.sub ? 54 : 40;
-    const titleW = n.label.length * 8.8 + 32; // small capitals with wide letter spacing
+    const titleW = n.label.length * 8.8 * k + 32; // small capitals with wide letter spacing
     return { w: Math.max(cols * chipW + (cols + 1) * 10, titleW, subW, 120), h: hdr + rows * CHIP_STEP + 8, hdr, cols, chipW };
   }
-  return { w: Math.max(120, n.label.length * 8.1 + 32, subW), h: n.sub ? 54 : 44, hdr: 0, cols: 0, chipW: 0 };
+  return { w: Math.max(120, n.label.length * 8.1 * k + 32, subW), h: n.sub ? 54 : 44, hdr: 0, cols: 0, chipW: 0 };
 }
 
-function layout(chart: ChartDef) {
+function layout(chart: ChartDef, k: number) {
   const maxLevel = Math.max(...chart.nodes.map((n) => n.level));
   const placed: Record<string, Placed> = {};
   let y = TOP;
   for (let lvl = 0; lvl <= maxLevel; lvl++) {
-    const row = chart.nodes.filter((n) => n.level === lvl).map((n) => ({ ...n, ...sizeOf(n), x: 0, y }));
+    const row = chart.nodes.filter((n) => n.level === lvl).map((n) => ({ ...n, ...sizeOf(n, k), x: 0, y }));
     const sum = row.reduce((a, n) => a + n.w, 0);
     const joins = row.filter((n, i) => n.joinNext && i < row.length - 1).length;
     const free = row.length - 1 - joins;
@@ -116,7 +129,10 @@ function NodeView({ n }: { n: Placed }) {
 function Diagram({ chart }: { chart: ChartDef }) {
   const [hover, setHover] = useState<string | null>(null);
   const [ref, shown] = useReveal<HTMLDivElement>(0.2);
-  const { placed, height } = layout(chart);
+  const i18n = useI18n();
+  const view = localize(chart, i18n);
+  const { placed, height } = layout(view, i18n.lang === 'en' ? 1 : 1.08);
+  const text = i18n.chart(chart.id, chart);
 
   const near = new Set<string>();
   if (hover) {
@@ -150,7 +166,7 @@ function Diagram({ chart }: { chart: ChartDef }) {
 
   return (
     <div ref={ref} className={`chart-canvas${shown ? ' in' : ''}${hover ? ' has-hover' : ''}`}>
-      <svg className="gods-chart" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`${chart.title}. ${chart.concept}`}>
+      <svg className="gods-chart" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`${text.title}. ${text.concept}`}>
         <defs>
           {edges.map((e) => e.grad && (
             <linearGradient key={e.i} id={`eg-${chart.id}-${e.i}`} gradientUnits="userSpaceOnUse" x1={e.grad.x1} y1={e.grad.y1} x2={e.grad.x2} y2={e.grad.y2}>
@@ -188,6 +204,8 @@ function Diagram({ chart }: { chart: ChartDef }) {
 }
 
 export function ChartPanel({ chart }: { chart: ChartDef }) {
+  const i18n = useI18n();
+  const text = i18n.chart(chart.id, chart);
   const used = new Set<StageId>();
   chart.nodes.forEach((n) => {
     used.add(n.stage);
@@ -196,22 +214,22 @@ export function ChartPanel({ chart }: { chart: ChartDef }) {
   const hasLink = chart.edges.some((e) => e.kind === 'link');
 
   return (
-    <section className="panel chart-panel" aria-label={chart.title}>
-      <h3 className="chart-title">{chart.title}</h3>
-      <p className="chart-period">{chart.period}</p>
-      <p className="chart-concept">{chart.concept}</p>
+    <section className="panel chart-panel" aria-label={text.title}>
+      <h3 className="chart-title">{text.title}</h3>
+      <p className="chart-period">{text.period}</p>
+      <p className="chart-concept">{text.concept}</p>
 
-      <p className="swipe-hint">Swipe sideways to see the whole chart</p>
+      <p className="swipe-hint">{i18n.t('chart.swipe')}</p>
       <div className="chart-wrap">
         <Diagram chart={chart} />
       </div>
 
       <div className="legend">
         {STAGES.filter((s) => used.has(s.id)).map((s) => (
-          <span key={s.id}><i className={`swatch s-${s.id}`} /> {s.label}</span>
+          <span key={s.id}><i className={`swatch s-${s.id}`} /> {i18n.stage(s.id, s).label}</span>
         ))}
-        {hasLink && <span><i className="line dashed" /> consort</span>}
-        <span className="legend-tip">Hover a god to see its connections. Click to open its page.</span>
+        {hasLink && <span><i className="line dashed" /> {i18n.t('chart.consort')}</span>}
+        <span className="legend-tip">{i18n.t('chart.tip')}</span>
       </div>
     </section>
   );

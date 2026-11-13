@@ -2,6 +2,7 @@ import { useState, type CSSProperties } from 'react';
 import { KINDS, GOD_ROLES, SCRIPTURES, type Scripture, type KindId } from '../scriptures';
 import { useReveal } from '../hooks';
 import { bookHref } from '../route';
+import { useI18n } from '../i18n';
 
 const AXIS_MIN = -1500;
 const AXIS_MAX = 1600;
@@ -10,30 +11,34 @@ const TICKS = [-1500, -1000, -500, 0, 500, 1000, 1500];
 const tickLabel = (y: number) => (y < 0 ? `${-y} BCE` : y === 0 ? '1 CE' : `${y} CE`);
 
 // Answer to "which book defined the gods", in order.
-const STEPS = [
-  { n: '1', title: 'Vedas', text: 'Name the earliest gods: Indra, Agni, Varuna, Soma.' },
-  { n: '2', title: 'Upanishads', text: 'Shift from many gods to one ultimate reality, Brahman.' },
-  { n: '3', title: 'Epics', text: 'Make Rama and Krishna avatars of Vishnu; Krishna speaks the Gita.' },
-  { n: '4', title: 'Puranas', text: 'Fix the gods as most Hindus know them, with the Goddess made supreme in the Devi Mahatmya.' },
-];
+const GODS_PATH_EN = {
+  title: 'Which book defined the gods?',
+  intro: 'No single book did. The idea of the gods was built up in layers, and the Puranas gave them the shape most Hindus know today.',
+  steps: [
+    { title: 'Vedas', text: 'Name the earliest gods: Indra, Agni, Varuna, Soma.' },
+    { title: 'Upanishads', text: 'Shift from many gods to one ultimate reality, Brahman.' },
+    { title: 'Epics', text: 'Make Rama and Krishna avatars of Vishnu; Krishna speaks the Gita.' },
+    { title: 'Puranas', text: 'Fix the gods as most Hindus know them, with the Goddess made supreme in the Devi Mahatmya.' },
+  ],
+};
 
 // Broad ages, shaded behind the bars to give the dates some context. The boundaries are approximate.
 const AGES = [
-  { from: -1500, to: -500, label: 'Vedic age' },
-  { from: -500, to: 500, label: 'Epic and classical age' },
-  { from: 500, to: 1600, label: 'Medieval devotion' },
+  { from: -1500, to: -500, key: 'books.age.vedic' as const },
+  { from: -500, to: 500, key: 'books.age.epic' as const },
+  { from: 500, to: 1600, key: 'books.age.medieval' as const },
 ];
 
 function Overview({ items }: { items: Scripture[] }) {
+  const i18n = useI18n();
+  const { t, date } = i18n;
   const [ref, shown] = useReveal<HTMLDivElement>(0.12);
   return (
-    <section className="overview" aria-label="When each text was composed">
-      <h2>When each text was composed</h2>
-      <p className="note">
-        Each bar is a book’s scholarly date range, drawn to scale. Faded ends mean the dates are uncertain. Click a row to open the book.
-      </p>
+    <section className="overview" aria-label={t('books.when')}>
+      <h2>{t('books.when')}</h2>
+      <p className="note">{t('books.whenNote')}</p>
       <div className="tl-legend">
-        {KINDS.map((k) => <span key={k.id}><i className={`tl-key kind-${k.id}`} /> {k.label}</span>)}
+        {KINDS.map((k) => <span key={k.id}><i className={`tl-key kind-${k.id}`} /> {i18n.kind(k.id, k.label)}</span>)}
       </div>
 
       <div className="tl-scroll">
@@ -42,10 +47,10 @@ function Overview({ items }: { items: Scripture[] }) {
             <span />
             <div className="tl-axis">
               {AGES.map((a) => (
-                <span key={a.label} className="tl-age" style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }}>{a.label}</span>
+                <span key={a.key} className="tl-age" style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }}>{t(a.key)}</span>
               ))}
-              {TICKS.map((t) => (
-                <span key={t} className="tl-tick" style={{ left: `${pos(t)}%` }}>{tickLabel(t)}</span>
+              {TICKS.map((tk) => (
+                <span key={tk} className="tl-tick" style={{ left: `${pos(tk)}%` }}>{date(tickLabel(tk))}</span>
               ))}
             </div>
           </div>
@@ -53,9 +58,9 @@ function Overview({ items }: { items: Scripture[] }) {
           <div className="tl-rows">
             <div className="tl-grid" aria-hidden="true">
               {AGES.map((a, i) => (
-                <span key={a.label} className={`tl-band b${i}`} style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }} />
+                <span key={a.key} className={`tl-band b${i}`} style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }} />
               ))}
-              {TICKS.map((t) => <span key={t} className="tl-line" style={{ left: `${pos(t)}%` }} />)}
+              {TICKS.map((tk) => <span key={tk} className="tl-line" style={{ left: `${pos(tk)}%` }} />)}
             </div>
 
             {items.map((s, i) => {
@@ -66,13 +71,13 @@ function Overview({ items }: { items: Scripture[] }) {
               const labelLeft = left + w > 76;
               return (
                 <a key={s.id} href={bookHref(s.id)} className="tl-row" style={{ '--i': i } as CSSProperties}>
-                  <span className="tl-name">{s.name}</span>
+                  <span className="tl-name">{i18n.book(s.id, s).name}</span>
                   <span className="tl-track">
                     {point ? (
                       <i className={`tl-dot kind-${s.kind}`} style={{ left: `${left}%` }} />
                     ) : (
                       <span className={`tl-bar kind-${s.kind}`} style={{ left: `${left}%`, width: `${w}%` }}>
-                        {inside && <em>{s.dates}</em>}
+                        {inside && <em>{date(s.dates)}</em>}
                       </span>
                     )}
                     {!inside && (
@@ -80,7 +85,7 @@ function Overview({ items }: { items: Scripture[] }) {
                         className="tl-out"
                         style={labelLeft ? { right: `calc(${100 - left}% + 10px)` } : { left: `calc(${left + w}% + 10px)` }}
                       >
-                        {s.dates}
+                        {date(s.dates)}
                       </em>
                     )}
                   </span>
@@ -95,17 +100,16 @@ function Overview({ items }: { items: Scripture[] }) {
 }
 
 function GodsPath() {
+  const { godsPath } = useI18n();
+  const p = godsPath(GODS_PATH_EN);
   return (
-    <section className="godspath" aria-label="Which texts defined the gods">
-      <h2>Which book defined the gods?</h2>
-      <p>
-        No single book did. The idea of the gods was built up in layers, and the Puranas gave
-        them the shape most Hindus know today.
-      </p>
+    <section className="godspath" aria-label={p.title}>
+      <h2>{p.title}</h2>
+      <p>{p.intro}</p>
       <ol>
-        {STEPS.map((s) => (
-          <li key={s.n}>
-            <span className="step-n">{s.n}</span>
+        {p.steps.map((s, i) => (
+          <li key={i}>
+            <span className="step-n">{i + 1}</span>
             <div><strong>{s.title}.</strong> {s.text}</div>
           </li>
         ))}
@@ -115,29 +119,32 @@ function GodsPath() {
 }
 
 function ScriptureCard({ s, index }: { s: Scripture; index: number }) {
+  const i18n = useI18n();
+  const { t, date } = i18n;
+  const loc = i18n.book(s.id, s);
   const [ref, shown] = useReveal<HTMLElement>();
   return (
     <section id={s.id} ref={ref} className={`era${shown ? ' in' : ''}`}>
       <span className="dot" />
-      <span className="date">{s.dates}</span>
+      <span className="date">{date(s.dates)}</span>
       <article className="card book-card">
-        <div className="when">{s.dates}</div>
+        <div className="when">{date(s.dates)}</div>
         <div className="meta">
           <span className="order">#{index + 1}</span>
-          <span className={`kind kind-${s.kind}`}>{KINDS.find((k) => k.id === s.kind)?.label}</span>
+          <span className={`kind kind-${s.kind}`}>{i18n.kind(s.kind, KINDS.find((k) => k.id === s.kind)?.label ?? '')}</span>
         </div>
-        <h2><a className="cardlink" href={bookHref(s.id)}>{s.name}</a></h2>
-        <p>{s.summary}</p>
+        <h2><a className="cardlink" href={bookHref(s.id)}>{loc.name}</a></h2>
+        <p>{loc.summary}</p>
         <div className="block">
-          <h3>What it provides</h3>
-          <p>{s.provides}</p>
+          <h3>{t('books.provides')}</h3>
+          <p>{loc.provides}</p>
         </div>
         <div className={`block gods role-${s.godsRole}`}>
-          <h3>On the gods <span className="role">{GOD_ROLES[s.godsRole]}</span></h3>
-          <p>{s.gods}</p>
+          <h3>{t('books.onGods')} <span className="role">{i18n.role(s.godsRole, GOD_ROLES[s.godsRole])}</span></h3>
+          <p>{loc.gods}</p>
         </div>
         <ul className="chips">
-          {s.contents.map((c) => <li key={c}>{c}</li>)}
+          {loc.contents.map((c) => <li key={c}>{c}</li>)}
         </ul>
       </article>
     </section>
@@ -145,6 +152,8 @@ function ScriptureCard({ s, index }: { s: Scripture; index: number }) {
 }
 
 export default function ScripturesView() {
+  const i18n = useI18n();
+  const { t } = i18n;
   const [kind, setKind] = useState<KindId | 'all'>('all');
   const items = kind === 'all' ? SCRIPTURES : SCRIPTURES.filter((s) => s.kind === kind);
   // Order number stays tied to composition order, not to the filter.
@@ -157,16 +166,16 @@ export default function ScripturesView() {
         <Overview items={SCRIPTURES} />
       </div>
 
-      <nav className="rail" aria-label="Filter by kind of text">
-        <button className={kind === 'all' ? 'pill active' : 'pill'} onClick={() => setKind('all')}>All, in order</button>
+      <nav className="rail" aria-label={t('books.filter')}>
+        <button className={kind === 'all' ? 'pill active' : 'pill'} onClick={() => setKind('all')}>{t('books.all')}</button>
         {KINDS.map((k) => (
           <button key={k.id} className={kind === k.id ? 'pill active' : 'pill'} onClick={() => setKind(k.id)}>
-            {k.label}
+            {i18n.kind(k.id, k.label)}
           </button>
         ))}
       </nav>
 
-      <main className="timeline" aria-label="Timeline of scriptures">
+      <main className="timeline" aria-label={t('books.timeline')}>
         {items.map((s) => <ScriptureCard key={s.id} s={s} index={order(s)} />)}
       </main>
     </>

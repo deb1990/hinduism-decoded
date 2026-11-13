@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
 import type { Era } from '../data';
+import { useI18n } from '../i18n';
 
 export default function EraRail({ eras, activeId }: { eras: Era[]; activeId: string | null }) {
+  const { t, era } = useI18n();
   const railRef = useRef<HTMLElement>(null);
 
   // Keep the active pill visible in the horizontally scrolling strip.
@@ -17,12 +19,15 @@ export default function EraRail({ eras, activeId }: { eras: Era[]; activeId: str
   }, [activeId]);
 
   return (
-    <nav className="rail" ref={railRef} aria-label="Eras">
-      {eras.map((e) => (
-        <a key={e.id} href={`#${e.id}`} className={e.id === activeId ? 'active' : undefined}>
-          {e.short}
-        </a>
-      ))}
+    <nav className="rail" ref={railRef} aria-label={t('eras.aria')}>
+      {eras.map((e) => {
+        const en = { short: e.short, name: e.name, summary: e.summary, texts: e.texts, ideas: e.ideas, figures: e.figures, note: e.confidence.note };
+        return (
+          <a key={e.id} href={`#${e.id}`} className={e.id === activeId ? 'active' : undefined}>
+            {era(e.id, en).short}
+          </a>
+        );
+      })}
     </nav>
   );
 }
