@@ -482,3 +482,35 @@ html { scroll-padding-top: 72px; }
 .notfound { text-align: center; }
 @media (max-width: 720px) { .godnav { grid-template-columns: 1fr; } .godnav-link.right, .godnav-link.center { text-align: left; } }
 @media (prefers-reduced-motion: reduce) { .tile, .tile-art, .godnav-link { transition: none; } }
+
+
+.aka { margin: 14px 0 0; font-size: 15px; letter-spacing: .02em; color: var(--a); }
+.aka::before { content: "also "; color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+
+
+
+/* A picture behind a god's page: it fills the screen and drifts slowly as you scroll */
+.photo-art { position: absolute; inset: 0; overflow: hidden; background: #03050c; }
+.photo-art img {
+  position: absolute; inset: 64px -3% 0 -3%; width: 106%; height: calc(100% - 64px); object-fit: cover; object-position: 76% 40%;
+  transform: translate3d(0, calc((var(--t, 0) - .5) * -50px), 0) scale(calc(1 + var(--t, 0) * .04));
+  will-change: transform; user-select: none;
+}
+.photo-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 5, 12, .85) 0%, rgba(3, 5, 12, .5) 36%, transparent 62%); }
+
+/* Text on the left, the figure on the right */
+.figure-hero .chapter-intro { place-items: center start; text-align: left; padding-left: clamp(24px, 7vw, 120px); padding-right: 46%; }
+.figure-hero .rv { max-width: 600px; }
+.figure-hero .chapter-title { margin-left: 0; font-size: clamp(48px, 7vw, 104px); }
+.figure-hero .chapter-lede { margin-left: 0; }
+.figure-hero .scroll-cue { margin-left: 0; }
+@media (max-width: 960px) {
+  .photo-art img { object-position: 82% 50%; }
+  .photo-art::after { background: rgba(3, 5, 12, .62); }
+  .figure-hero .chapter-intro { place-items: center; text-align: center; padding: 120px 24px; }
+  .figure-hero .chapter-title, .figure-hero .chapter-lede { margin-left: auto; }
+  .figure-hero .scroll-cue { margin-left: auto; }
+}
+.tile-photo { width: 100%; height: 100%; object-fit: cover; object-position: 80% 40%; display: block; }
+@media (prefers-reduced-motion: reduce) { .photo-art img { transform: none; } }

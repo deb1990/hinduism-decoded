@@ -68,6 +68,7 @@ const upperRays = (n: number, r1: number, r2: number, w: number) => {
   return d;
 };
 
+
 const MOTIFS: Record<Motif, () => ReactNode> = {
   vajra: () => {
     const prong = (s: number) => [-62, -22, 22, 62].map((o) => {
@@ -631,6 +632,15 @@ export default function GodArt({ motif }: { motif: Motif }) {
   return (
     <div className="art-frame god-art" aria-hidden="true">
       {MOTIFS[motif]()}
+    </div>
+  );
+}
+
+/** A full-bleed picture behind a god's page. It drifts slowly as the page scrolls (the --t variable). */
+export function PhotoArt({ image }: { image: string }) {
+  return (
+    <div className="photo-art" aria-hidden="true">
+      <img src={`${import.meta.env.BASE_URL}gods/${image}`} alt="" draggable={false} />
     </div>
   );
 }

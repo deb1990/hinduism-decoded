@@ -4,7 +4,7 @@ import { STORIES } from '../stories';
 import { GOD_ART, accentOf, deepOf } from '../godArt';
 import { godHref } from '../route';
 import Chapter from '../components/Chapter';
-import GodArt from '../components/GodArt';
+import GodArt, { PhotoArt } from '../components/GodArt';
 
 /** One god, full screen: their artwork, a long explanation, and the books that define them. */
 export default function GodPage({ id }: { id: string }) {
@@ -33,12 +33,18 @@ export default function GodPage({ id }: { id: string }) {
     <Chapter
       id="god"
       kicker={`${group} · ${chapter?.title ?? ''}`}
-      title={god.name}
+      title={god.name.split(' (')[0]}
       lede={story?.lead ?? god.summary}
-      artNode={<GodArt motif={art.motif} />}
+      artNode={art.image ? <PhotoArt image={art.image} /> : <GodArt motif={art.motif} />}
       accent={accentOf(art.hue)}
       deep={deepOf(art.hue)}
-      extra={<p className="definedchip"><span>Defined in</span> {god.definedIn}</p>}
+      className={art.image ? 'figure-hero' : undefined}
+      extra={
+        <>
+          {god.name.includes(' (') && <p className="aka">{god.name.slice(god.name.indexOf('(') + 1, -1)}</p>}
+          <p className="definedchip"><span>Defined in</span> {god.definedIn}</p>
+        </>
+      }
     >
       <div className="body-inner godbody">
         <section className="panel prose">

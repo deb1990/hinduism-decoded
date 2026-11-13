@@ -2,6 +2,7 @@
 // of the book group that first defines the god.
 
 import { GODS, type God } from './gods';
+import { CHARTS } from './charts';
 import type { ArtKind } from './components/Art';
 
 export interface ChapterDef {
@@ -52,8 +53,29 @@ export function chapterOf(g: God): ChapterDef['id'] {
   return 'puranic';
 }
 
+/** Gods in the order the chart shows them: top row to bottom row, left to right, group members in order. */
+function chartOrder(chartId: string): string[] {
+  const chart = CHARTS.find((c) => c.id === chartId);
+  if (!chart) return [];
+  const seen: string[] = [];
+  const add = (id?: string) => { if (id && !seen.includes(id)) seen.push(id); };
+  [...chart.nodes].sort((a, b) => a.level - b.level).forEach((n) => {
+    add(n.god);
+    n.members?.forEach((m) => add(m.god));
+  });
+  return seen;
+}
+
+/** The gods of a chapter, in the same order as that chapter's chart; any the chart does not show come last. */
 export function godsFor(chapter: ChapterDef['id']): God[] {
-  return GODS.filter((g) => chapterOf(g) === chapter);
+  const inChapter = GODS.filter((g) => chapterOf(g) === chapter);
+  const def = GOD_CHAPTERS.find((c) => c.id === chapter);
+  const order = def ? chartOrder(def.chartId) : [];
+  const rank = (g: God) => {
+    const i = order.indexOf(g.id);
+    return i >= 0 ? i : order.length + inChapter.indexOf(g);
+  };
+  return [...inChapter].sort((a, b) => rank(a) - rank(b));
 }
 
 /** Every god in reading order: chapter by chapter, earliest first. */

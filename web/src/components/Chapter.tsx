@@ -10,18 +10,19 @@ interface Props {
   art?: ArtKind;
   artNode?: ReactNode;
   extra?: ReactNode;
+  className?: string;
   accent: string;
   deep: string;
   children: ReactNode;
 }
 
 /** A full-screen intro over parallax artwork, followed by the chapter's content. */
-export default function Chapter({ id, kicker, title, lede, art, artNode, extra, accent, deep, children }: Props) {
+export default function Chapter({ id, kicker, title, lede, art, artNode, extra, className, accent, deep, children }: Props) {
   const ref = useParallax<HTMLElement>();
   const [introRef, shown] = useReveal<HTMLDivElement>(0.25);
 
   return (
-    <section id={id} ref={ref} className="chapter" style={{ '--a': accent, '--b': deep } as CSSProperties}>
+    <section id={id} ref={ref} className={`chapter${className ? ` ${className}` : ''}`} style={{ '--a': accent, '--b': deep } as CSSProperties}>
       <div className="art-stick">
         {artNode ?? (art && <Art kind={art} />)}
       </div>

@@ -3,6 +3,7 @@ import { GROUPS, type God } from '../gods';
 import { GOD_ART, accentOf, deepOf } from '../godArt';
 import { godHref } from '../route';
 import GodArt from './GodArt';
+import { BASE_GOD_IMG } from './photoPath';
 
 /** A god's artwork and name, linking to that god's page. */
 export default function GodTile({ god }: { god: God }) {
@@ -10,7 +11,9 @@ export default function GodTile({ god }: { god: God }) {
   const group = GROUPS.find((g) => g.id === god.group)?.label;
   return (
     <a className="tile" href={godHref(god.id)} style={{ '--a': accentOf(art.hue), '--b': deepOf(art.hue) } as CSSProperties}>
-      <span className="tile-art"><GodArt motif={art.motif} /></span>
+      <span className="tile-art">
+        {art.image ? <img className="tile-photo" src={`${BASE_GOD_IMG}${art.image}`} alt="" loading="lazy" /> : <GodArt motif={art.motif} />}
+      </span>
       <span className="tile-text">
         <span className="tile-group">{group}</span>
         <span className="tile-name">{god.name}</span>
