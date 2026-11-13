@@ -14,7 +14,7 @@ Three kinds of page, each with a full-screen intro over parallax artwork:
 - **A page for each god** (`#/god/indra`). Full screen, with its own symbolic artwork as the background, a long explanation, a well-known story, symbols, worship, how traditions differ, and the books that define the god in order with their dates.
 - **Books.** The main scriptures on one to-scale timeline, with what each provides and what it says about the gods.
 - **A page for each book** (`#/book/rigveda`). Full screen, with a long point-by-point explanation: facts at a glance, structure and contents, key teachings, what it says about the gods, famous passages, composition and transmission, later influence, and how to read it today.
-- **Eras.** The eras of Hinduism from the Indus Valley to today, with key texts, ideas and people.
+- **Eras.** The eras of Hinduism from the Indus Valley to today, with key texts, ideas and people, and a map for each era (the Indus Valley to the Tamil south, ending with a world map of the diaspora). The maps are drawn as vectors from public-domain Natural Earth data; the shaded regions and site positions are approximate.
 
 The site is available in English, Hindi and Bengali (the globe button in the lower right corner). The interface, labels, god names and summaries, book summaries, era text and chart labels are translated; the long god and book pages are still English only. The translations were written by an AI model and have not been reviewed by a native speaker or a scholar.
 
@@ -44,6 +44,7 @@ npm run build      # static site in web/dist
 | `web/src/i18n/` | The language system: English strings, and the Hindi (`hi.ts`) and Bengali (`bn.ts`) translations |
 | `web/src/stories.ts`, `web/src/stories/` | The long text on each god's page |
 | `web/src/bookDetails.ts`, `web/src/books/` | The long point-by-point text on each book's page |
+| `web/src/eraMaps.ts`, `web/src/geo/`, `web/scripts/build-maps.mjs` | The era maps: regions and sites, projections, and the generated coastline and river data |
 | `web/src/godArt.ts`, `web/src/components/GodArt.tsx` | Which artwork and colour each god gets, and the 34 motifs |
 | `web/src/charts.ts` | The four gods charts |
 | `web/src/scriptures.ts` | The scriptures timeline |

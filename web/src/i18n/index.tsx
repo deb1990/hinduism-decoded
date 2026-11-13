@@ -39,6 +39,7 @@ export interface I18n {
   godsPath: (en: { title: string; intro: string; steps: { title: string; text: string }[] }) => { title: string; intro: string; steps: { title: string; text: string }[] };
   god: (id: string, en: { name: string; summary: string; definedIn: string }) => { name: string; summary: string; definedIn: string };
   book: (id: string, en: { name: string; summary: string; provides: string; gods: string; contents: string[] }) => { name: string; summary: string; provides: string; gods: string; contents: string[] };
+  place: (en: string) => string;
   era: (id: string, en: { short: string; name: string; summary: string; texts: string[]; ideas: string[]; figures: string[]; note: string }) => { short: string; name: string; summary: string; texts: string[]; ideas: string[]; figures: string[]; note: string };
 }
 
@@ -78,6 +79,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
       god: (id, en) => ov?.gods[id] ?? en,
       book: (id, en) => ov?.books[id] ?? en,
       era: (id, en) => ov?.eras[id] ?? en,
+      place: (en) => ov?.places[en] ?? en,
     };
   }, [lang]);
 

@@ -675,3 +675,23 @@ html[lang="hi"] .landing h1 .power, html[lang="bn"] .landing h1 .power { font-si
 .langmenu button.active { color: var(--accent); }
 @media (max-width: 640px) { .langswitch { right: 12px; bottom: 12px; } .langbtn { height: 42px; font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .langbtn { transition: none; } .langbtn:hover { transform: none; } }
+
+/* Eras: the facts are always shown, with a divider above them */
+.facets.open { padding-top: 18px; margin-top: 4px; border-top: 1px solid rgba(255, 255, 255, .1); gap: 18px; }
+.era .card p { margin-bottom: 14px; }
+
+/* =========================================================
+   Era maps
+   ========================================================= */
+.eramap { margin: 4px 0 20px; }
+.eramap svg { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .1); }
+.eramap figcaption { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.map-ocean { fill: #07111d; }
+.map-land { fill: #172539; stroke: #2d4565; stroke-linejoin: round; }
+.map-river { fill: none; stroke: #4f93d8; opacity: .75; stroke-linecap: round; stroke-linejoin: round; }
+.map-region { fill: color-mix(in srgb, var(--a) 26%, transparent); stroke: var(--a); }
+.map-region-label { fill: color-mix(in srgb, var(--a) 70%, #fff); font-family: var(--sans); font-weight: 700; font-style: italic; stroke: #07111d; paint-order: stroke; stroke-linejoin: round; }
+.map-site { fill: #fff; stroke: var(--a); }
+.map-label { fill: #f3eadb; font-family: var(--sans); font-weight: 700; stroke: #07111d; paint-order: stroke; stroke-linejoin: round; }
+.map-label.tiny { fill: #9cc6f2; font-weight: 600; font-style: italic; }
+.map-leader { stroke: rgba(243, 234, 219, .55); }

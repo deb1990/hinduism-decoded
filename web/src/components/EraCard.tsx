@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import type { Era } from '../data';
 import { useReveal } from '../hooks';
 import { useI18n } from '../i18n';
+import EraMap from './EraMap';
 
 function Facet({ title, items }: { title: string; items: string[] }) {
   return (
@@ -16,9 +16,7 @@ function Facet({ title, items }: { title: string; items: string[] }) {
 
 export default function EraCard({ era }: { era: Era }) {
   const { t, era: tr, date } = useI18n();
-  const [open, setOpen] = useState(false);
   const [ref, shown] = useReveal<HTMLElement>();
-  const panelId = `d-${era.id}`;
   const loc = tr(era.id, { short: era.short, name: era.name, summary: era.summary, texts: era.texts, ideas: era.ideas, figures: era.figures, note: era.confidence.note });
 
   return (
@@ -31,29 +29,17 @@ export default function EraCard({ era }: { era: Era }) {
         <h2>{loc.name}</h2>
         <p>{loc.summary}</p>
 
-        <button
-          type="button"
-          className="more"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {t('eras.more')} <span className="chev">▾</span>
-        </button>
+        <EraMap eraId={era.id} eraName={loc.name} />
 
-        <div id={panelId} className={`detail${open ? ' open' : ''}`}>
-          <div>
-            <div className="facets">
-              <Facet title={t('eras.texts')} items={loc.texts} />
-              <Facet title={t('eras.ideas')} items={loc.ideas} />
-              <Facet title={t('eras.people')} items={loc.figures} />
-              <div className="conf">
-                <span className={`badge ${era.confidence.level}`}>
-                  {t(`eras.conf.${era.confidence.level}` as 'eras.conf.High')}
-                </span>
-                <span>{loc.note}</span>
-              </div>
-            </div>
+        <div className="facets open">
+          <Facet title={t('eras.texts')} items={loc.texts} />
+          <Facet title={t('eras.ideas')} items={loc.ideas} />
+          <Facet title={t('eras.people')} items={loc.figures} />
+          <div className="conf">
+            <span className={`badge ${era.confidence.level}`}>
+              {t(`eras.conf.${era.confidence.level}` as 'eras.conf.High')}
+            </span>
+            <span>{loc.note}</span>
           </div>
         </div>
       </article>

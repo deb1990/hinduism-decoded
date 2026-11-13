@@ -5,6 +5,7 @@ import Chapter from '../components/Chapter';
 import EraCard from '../components/EraCard';
 import EraRail from '../components/EraRail';
 import PageLinks from '../components/PageLinks';
+import { MapDefs } from '../components/EraMap';
 
 const ERA_IDS = ERAS.map((e) => e.id);
 
@@ -13,6 +14,7 @@ function ErasTimeline() {
   const activeId = useActiveSection(ERA_IDS);
   return (
     <>
+      <MapDefs />
       <EraRail eras={ERAS} activeId={activeId} />
       <div className="timeline" aria-label={t('eras.timeline')}>
         {ERAS.map((era) => <EraCard key={era.id} era={era} />)}

@@ -28,6 +28,8 @@ export interface Overlay {
   gods: Record<string, { name: string; summary: string; definedIn: string }>;
   books: Record<string, { name: string; summary: string; provides: string; gods: string; contents: string[] }>;
   eras: Record<string, { short: string; name: string; summary: string; texts: string[]; ideas: string[]; figures: string[]; note: string }>;
+  /** Place names on the era maps, keyed by the English name. */
+  places: Record<string, string>;
   /** Replacements applied in order to English date strings such as "c. 1500–1000 BCE". */
   dates: [string, string][];
 }
