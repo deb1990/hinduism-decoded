@@ -53,7 +53,8 @@ export function chapterOf(g: God): ChapterDef['id'] {
   return 'puranic';
 }
 
-/** Gods in the order the chart shows them: top row to bottom row, left to right, group members in order. */
+/** Gods level by level, as the chart draws them: each row left to right, so a god's consort follows it
+ *  (Brahman, Brahma, Sarasvati, Vishnu, Lakshmi, Shiva, Parvati, then the groups below). */
 function chartOrder(chartId: string): string[] {
   const chart = CHARTS.find((c) => c.id === chartId);
   if (!chart) return [];
@@ -66,11 +67,19 @@ function chartOrder(chartId: string): string[] {
   return seen;
 }
 
-/** The gods of a chapter, in the same order as that chapter's chart; any the chart does not show come last. */
+/** Gods the chapter's chart draws as their own box (not inside a group), whichever chapter they were first defined in. */
+function chartNodeGods(chartId: string): string[] {
+  const chart = CHARTS.find((c) => c.id === chartId);
+  return chart ? chart.nodes.flatMap((n) => (n.god ? [n.god] : [])) : [];
+}
+
+/** The gods of a chapter, in the same order as that chapter's chart. In the Puranic chapter a consort or the root the chart draws is listed
+ *  beside its partner (Sarasvati after Brahma, Parvati after Shiva) even when she was first defined in another chapter. */
 export function godsFor(chapter: ChapterDef['id']): God[] {
-  const inChapter = GODS.filter((g) => chapterOf(g) === chapter);
   const def = GOD_CHAPTERS.find((c) => c.id === chapter);
   const order = def ? chartOrder(def.chartId) : [];
+  const nodes = def && def.chartId === 'puranic' ? chartNodeGods(def.chartId) : [];
+  const inChapter = GODS.filter((g) => chapterOf(g) === chapter || nodes.includes(g.id));
   const rank = (g: God) => {
     const i = order.indexOf(g.id);
     return i >= 0 ? i : order.length + inChapter.indexOf(g);
@@ -78,5 +87,5 @@ export function godsFor(chapter: ChapterDef['id']): God[] {
   return [...inChapter].sort((a, b) => rank(a) - rank(b));
 }
 
-/** Every god in reading order: chapter by chapter, earliest first. */
-export const GOD_ORDER: God[] = GOD_CHAPTERS.flatMap((c) => godsFor(c.id));
+/** Every god in reading order: chapter by chapter, earliest first, each god once. */
+export const GOD_ORDER: God[] = GOD_CHAPTERS.flatMap((c) => godsFor(c.id)).filter((g, i, all) => all.findIndex((x) => x.id === g.id) === i);
