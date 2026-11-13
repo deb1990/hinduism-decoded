@@ -534,3 +534,49 @@ body { font-size: 17.5px; }
 .brand { font-size: 18px; letter-spacing: .04em; font-weight: 600; }
 .dropcap::first-letter { font-weight: 600; }
 .step-book, .cn-name, .grp-title { font-family: var(--sans); }
+
+/* =========================================================
+   Small screens
+   ========================================================= */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+.chapter-title, .landing h1, .tile-name, .godnav-link strong, .pagelink-label, .godbody h2 { overflow-wrap: anywhere; }
+.definedchip { flex-wrap: wrap; max-width: 100%; }
+.swipe-hint { display: none; margin: 0 0 8px; font-size: 12.5px; color: var(--muted); }
+.chart-wrap { -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 860px) {
+  .swipe-hint { display: block; }
+  .matrix tbody th { position: sticky; left: 0; z-index: 1; background: #0d0a08; padding-right: 12px; }
+  .matrix thead th:first-child { position: sticky; left: 0; z-index: 1; background: #0d0a08; }
+  .matrix { font-size: 12.5px; }
+  .gantt-axis span:nth-child(even) { display: none; }
+  .gods-chart { min-width: 620px; }
+  .chart-concept { font-size: 15.5px; }
+  .prose p, .dropcap { font-size: 17px; line-height: 1.7; }
+  .rail { max-width: calc(100% - 24px); }
+  .rail a, .pill { padding: 9px 14px; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 16.5px; }
+  .chapter-title, .figure-hero .chapter-title { font-size: clamp(24px, 8vw, 40px); }
+  .landing h1 { font-size: clamp(38px, 12.5vw, 64px); }
+  .landing h1 .power { position: static; display: block; margin: 6px 0 0; font-size: 13px; }
+  .tagline { font-size: 17px; }
+  .landing-lede { font-size: 16px; }
+  .chapter-lede { font-size: 17px; }
+  .chapter-intro { padding: 88px 18px 72px; }
+  .figure-hero .chapter-intro { padding: 88px 18px 72px; }
+  .chapter-body { padding-left: 14px; padding-right: 14px; }
+  .panel { padding: 18px; }
+  .trio .panel { padding: 20px; }
+  .godbody h2 { font-size: 22px; }
+  .tile { aspect-ratio: 4 / 4.2; }
+  .cta { padding: 13px 24px; }
+  .topnav { padding: 0 8px; }
+  .topnav nav a { padding: 8px 11px; font-size: 13px; }
+  .pagelinks { padding: 64px 16px 24px; }
+  .atlas, .chapter-body .timeline { padding-left: 0; padding-right: 0; }
+  .photo-art::after { background: rgba(3, 5, 12, .7); }
+}

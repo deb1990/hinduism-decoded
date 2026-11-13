@@ -201,6 +201,7 @@ export function ChartPanel({ chart }: { chart: ChartDef }) {
       <p className="chart-period">{chart.period}</p>
       <p className="chart-concept">{chart.concept}</p>
 
+      <p className="swipe-hint">Swipe sideways to see the whole chart</p>
       <div className="chart-wrap">
         <Diagram chart={chart} />
       </div>
