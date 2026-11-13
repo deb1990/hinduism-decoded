@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { ChartDef, GNode } from '../charts';
 import { STAGES, type StageId } from '../gods';
 import { useReveal } from '../hooks';
+import { godHref } from '../route';
 
 const W = 940;
 const PAD = 24;
@@ -69,7 +70,7 @@ function Chip({ x, y, w, label, stage, god }: { x: number; y: number; w: number;
       <text className="cn-name small" x={x + w / 2} y={y + 17.5} textAnchor="middle">{label}</text>
     </g>
   );
-  return god ? <a href={`#god-${god}`}>{g}</a> : g;
+  return god ? <a href={godHref(god)}>{g}</a> : g;
 }
 
 function NodeView({ n }: { n: Placed }) {
@@ -109,7 +110,7 @@ function NodeView({ n }: { n: Placed }) {
       )}
     </g>
   );
-  return n.god ? <a href={`#god-${n.god}`}>{body}</a> : body;
+  return n.god ? <a href={godHref(n.god)}>{body}</a> : body;
 }
 
 function Diagram({ chart }: { chart: ChartDef }) {
@@ -209,7 +210,7 @@ export function ChartPanel({ chart }: { chart: ChartDef }) {
           <span key={s.id}><i className={`swatch s-${s.id}`} /> {s.label}</span>
         ))}
         {hasLink && <span><i className="line dashed" /> consort</span>}
-        <span className="legend-tip">Hover a god to see its connections. Click to open its card.</span>
+        <span className="legend-tip">Hover a god to see its connections. Click to open its page.</span>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { PAGES, type Route } from '../route';
 
 export default function TopNav({ route }: { route: Route }) {
+  const current = route === 'god' ? 'gods' : route;
   return (
     <header className="topnav">
       <a className="brand" href="#/" aria-label="Hinduism decoded, home">
@@ -8,7 +9,7 @@ export default function TopNav({ route }: { route: Route }) {
       </a>
       <nav aria-label="Pages">
         {PAGES.map((p) => (
-          <a key={p.route} href={p.href} className={p.route === route ? 'active' : undefined} aria-current={p.route === route ? 'page' : undefined}>
+          <a key={p.route} href={p.href} className={p.route === current ? 'active' : undefined} aria-current={p.route === current ? 'page' : undefined}>
             {p.label}
           </a>
         ))}

@@ -1,7 +1,7 @@
-import { PAGES, type Route } from '../route';
+import { PAGES, type PageRoute } from '../route';
 
 /** Links to the other pages, shown at the end of each page. */
-export default function PageLinks({ current }: { current: Route }) {
+export default function PageLinks({ current }: { current: PageRoute }) {
   return (
     <section className="pagelinks" aria-label="Continue">
       <h2>Keep exploring</h2>

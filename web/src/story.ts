@@ -44,7 +44,7 @@ export const GOD_CHAPTERS: ChapterDef[] = [
 
 const SHAKTA = new Set(['durga', 'mahakali', 'mahalakshmi', 'mahasarasvati', 'saptamatrika']);
 
-function chapterOf(g: God): ChapterDef['id'] {
+export function chapterOf(g: God): ChapterDef['id'] {
   if (SHAKTA.has(g.id)) return 'shakta';
   const first = g.steps.find((s) => s.weight === 'defines') ?? g.steps[0];
   if (first.stage === 'veda' || first.stage === 'later') return 'vedic';
@@ -55,3 +55,6 @@ function chapterOf(g: God): ChapterDef['id'] {
 export function godsFor(chapter: ChapterDef['id']): God[] {
   return GODS.filter((g) => chapterOf(g) === chapter);
 }
+
+/** Every god in reading order: chapter by chapter, earliest first. */
+export const GOD_ORDER: God[] = GOD_CHAPTERS.flatMap((c) => godsFor(c.id));

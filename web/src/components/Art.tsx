@@ -5,12 +5,12 @@ import type { CSSProperties, ReactNode } from 'react';
 
 export type ArtKind = 'flame' | 'bindu' | 'wheel' | 'lotus' | 'yantra' | 'rays' | 'rings';
 
-const TAU = Math.PI * 2;
+export const TAU = Math.PI * 2;
 const n1 = (v: number) => v.toFixed(1);
-const pt = (r: number, a: number) => `${n1(r * Math.cos(a))} ${n1(r * Math.sin(a))}`;
+export const pt = (r: number, a: number) => `${n1(r * Math.cos(a))} ${n1(r * Math.sin(a))}`;
 
 /** n petals between radius r1 and r2; w is the half-width as a share of the gap between petals. */
-function petals(n: number, r1: number, r2: number, w: number, off = 0): string {
+export function petals(n: number, r1: number, r2: number, w: number, off = 0): string {
   let d = '';
   const half = (TAU / n) * w;
   const rm = ((r1 + r2) / 2) * 1.08;
@@ -21,7 +21,7 @@ function petals(n: number, r1: number, r2: number, w: number, off = 0): string {
   return d;
 }
 
-function rays(n: number, r1: number, r2: number, w: number, off = 0): string {
+export function rays(n: number, r1: number, r2: number, w: number, off = 0): string {
   let d = '';
   const half = ((TAU / n) * w) / 2;
   for (let i = 0; i < n; i++) {
@@ -31,7 +31,7 @@ function rays(n: number, r1: number, r2: number, w: number, off = 0): string {
   return d;
 }
 
-function spokes(n: number, r1: number, r2: number, off = 0): string {
+export function spokes(n: number, r1: number, r2: number, off = 0): string {
   let d = '';
   for (let i = 0; i < n; i++) {
     const a = off + (i / n) * TAU;
@@ -40,19 +40,19 @@ function spokes(n: number, r1: number, r2: number, off = 0): string {
   return d;
 }
 
-function triangle(r: number, up: boolean): string {
+export function triangle(r: number, up: boolean): string {
   const start = up ? -Math.PI / 2 : Math.PI / 2;
   return [0, 1, 2].map((k) => pt(r, start + (k * TAU) / 3)).join(' ');
 }
 
-function dots(n: number, r: number, size: number) {
+export function dots(n: number, r: number, size: number) {
   return Array.from({ length: n }, (_, i) => {
     const a = (i / n) * TAU;
     return <circle key={i} cx={n1(r * Math.cos(a))} cy={n1(r * Math.sin(a))} r={size} className="f" />;
   });
 }
 
-function Layer({ s, spin, sc = 0, children }: { s: number; spin: number; sc?: number; children: ReactNode }) {
+export function Layer({ s, spin, sc = 0, children }: { s: number; spin: number; sc?: number; children: ReactNode }) {
   return (
     <svg
       className="layer"
@@ -64,7 +64,7 @@ function Layer({ s, spin, sc = 0, children }: { s: number; spin: number; sc?: nu
   );
 }
 
-function layers(kind: ArtKind): ReactNode {
+export function layers(kind: ArtKind): ReactNode {
   switch (kind) {
     case 'flame':
       return (

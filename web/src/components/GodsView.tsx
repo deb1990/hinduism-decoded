@@ -1,4 +1,5 @@
-import { GODS, GROUPS, STAGES, WEIGHT_LABEL, type God, type StageId, type Weight } from '../gods';
+import { GODS, STAGES, WEIGHT_LABEL, type God, type StageId, type Weight } from '../gods';
+import { godHref } from '../route';
 
 const RANK: Record<Weight, number> = { mention: 1, major: 2, defines: 3 };
 
@@ -28,7 +29,7 @@ export function Matrix() {
           <tbody>
             {GODS.map((g) => (
               <tr key={g.id}>
-                <th scope="row"><a href={`#god-${g.id}`}>{g.name}</a></th>
+                <th scope="row"><a href={godHref(g.id)}>{g.name}</a></th>
                 {STAGES.map((s) => {
                   const w = strongest(g, s.id);
                   return (
@@ -48,35 +49,5 @@ export function Matrix() {
         <span><i className="mdot w-mention" /> Appears</span>
       </div>
     </section>
-  );
-}
-
-export function GodCard({ god }: { god: God }) {
-  const group = GROUPS.find((g) => g.id === god.group)?.label;
-  return (
-    <article id={`god-${god.id}`} className="god">
-      <div className="meta">
-        <span className="order">{group}</span>
-      </div>
-      <h2>{god.name}</h2>
-      <p className="gsum">{god.summary}</p>
-      <p className="defined"><strong>Defined in:</strong> {god.definedIn}</p>
-      <ol className="steps">
-        {god.steps.map((s, i) => {
-          const stage = STAGES.find((x) => x.id === s.stage);
-          return (
-            <li key={i} className={`step w-${s.weight}`}>
-              <span className="step-dot" />
-              <div className="step-head">
-                <span className="step-stage">{stage?.label}</span>
-                <span className="step-weight">{WEIGHT_LABEL[s.weight]}</span>
-              </div>
-              <div className="step-book">{s.book} <span className="step-years">{s.dates}</span></div>
-              <div className="step-note">{s.note}</div>
-            </li>
-          );
-        })}
-      </ol>
-    </article>
   );
 }

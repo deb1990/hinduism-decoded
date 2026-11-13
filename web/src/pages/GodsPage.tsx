@@ -6,7 +6,7 @@ import Art from '../components/Art';
 import Chapter from '../components/Chapter';
 import PageLinks from '../components/PageLinks';
 import { ChartPanel } from '../components/GodsCharts';
-import { GodCard } from '../components/GodsView';
+import GodTile from '../components/GodTile';
 
 const NAV = [
   { id: 'top', label: 'Start' },
@@ -51,8 +51,9 @@ function GodChapter({ def }: { def: ChapterDef }) {
       <div className="body-inner">
         {chart && <ChartPanel chart={chart} />}
         <h3 className="cards-title">The gods in this chapter</h3>
-        <div className="gods-grid">
-          {gods.map((g) => <GodCard key={g.id} god={g} />)}
+        <p className="note">Open a god for a full page: the long story, the books that define them, and how they are worshipped.</p>
+        <div className="tiles">
+          {gods.map((g) => <GodTile key={g.id} god={g} />)}
         </div>
       </div>
     </Chapter>
