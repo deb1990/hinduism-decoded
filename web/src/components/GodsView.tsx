@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import GodsCharts from './GodsCharts';
-import { GODS, GROUPS, STAGES, WEIGHT_LABEL, type God, type GodGroup, type StageId, type Weight } from '../gods';
+import { GODS, GROUPS, STAGES, WEIGHT_LABEL, type God, type StageId, type Weight } from '../gods';
 
 const RANK: Record<Weight, number> = { mention: 1, major: 2, defines: 3 };
 
@@ -12,7 +10,7 @@ function strongest(god: God, stage: StageId): Weight | null {
   return best;
 }
 
-function Matrix() {
+export function Matrix() {
   return (
     <section className="overview" aria-label="Where each god appears">
       <h2>Where each god appears</h2>
@@ -53,7 +51,7 @@ function Matrix() {
   );
 }
 
-function GodCard({ god }: { god: God }) {
+export function GodCard({ god }: { god: God }) {
   const group = GROUPS.find((g) => g.id === god.group)?.label;
   return (
     <article id={`god-${god.id}`} className="god">
@@ -80,47 +78,5 @@ function GodCard({ god }: { god: God }) {
         })}
       </ol>
     </article>
-  );
-}
-
-export default function GodsView() {
-  const [group, setGroup] = useState<GodGroup | 'all'>('all');
-  const items = group === 'all' ? GODS : GODS.filter((g) => g.group === group);
-
-  // A chart or matrix link to a card hidden by the filter: show all gods, then scroll to it.
-  useEffect(() => {
-    const onHash = () => {
-      const id = location.hash.replace('#god-', '');
-      if (!location.hash.startsWith('#god-')) return;
-      const god = GODS.find((g) => g.id === id);
-      if (god && group !== 'all' && god.group !== group) {
-        setGroup('all');
-        setTimeout(() => document.getElementById(`god-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-      }
-    };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, [group]);
-
-  return (
-    <>
-      <div className="intro">
-        <GodsCharts />
-        <Matrix />
-      </div>
-
-      <nav className="rail" aria-label="Filter gods">
-        <button className={group === 'all' ? 'pill active' : 'pill'} onClick={() => setGroup('all')}>All gods</button>
-        {GROUPS.map((g) => (
-          <button key={g.id} className={group === g.id ? 'pill active' : 'pill'} onClick={() => setGroup(g.id)}>
-            {g.label}
-          </button>
-        ))}
-      </nav>
-
-      <main className="gods-grid" aria-label="Gods and the books that define them">
-        {items.map((g) => <GodCard key={g.id} god={g} />)}
-      </main>
-    </>
   );
 }

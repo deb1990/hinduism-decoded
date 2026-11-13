@@ -1,31 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
-// Theme: follows the system until the user toggles; remembered when storage works.
-export type Theme = 'light' | 'dark';
-
-export function useTheme(): [Theme | null, () => void] {
-  const [theme, setTheme] = useState<Theme | null>(() => {
-    try { return localStorage.getItem('theme') as Theme | null; } catch { return null; }
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme) root.dataset.theme = theme;
-    else delete root.dataset.theme;
-  }, [theme]);
-
-  const toggle = () => {
-    const dark = theme
-      ? theme === 'dark'
-      : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next: Theme = dark ? 'light' : 'dark';
-    setTheme(next);
-    try { localStorage.setItem('theme', next); } catch { /* storage unavailable */ }
-  };
-
-  return [theme, toggle];
-}
-
 // Page scroll as 0..100.
 export function useScrollProgress(): number {
   const [pct, setPct] = useState(0);
@@ -76,4 +50,35 @@ export function useActiveSection(ids: string[]): string | null {
     return () => io.disconnect();
   }, [ids]);
   return active;
+}
+
+// Sets --t on the element: 0 when its top reaches the viewport top, 1 when its bottom leaves
+// (for a one-screen element, 0 to 1 as it scrolls away). CSS layers use --t to drift and turn.
+export function useParallax<T extends HTMLElement>(): RefObject<T> {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (r.bottom < -vh || r.top > 2 * vh) return;
+      const span = Math.max(r.height - vh, vh);
+      const t = Math.min(1, Math.max(0, -r.top / span));
+      el.style.setProperty('--t', t.toFixed(4));
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+  return ref;
 }

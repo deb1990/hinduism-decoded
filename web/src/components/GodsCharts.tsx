@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { CHARTS, type ChartDef, type GNode } from '../charts';
+import type { ChartDef, GNode } from '../charts';
 import { STAGES, type StageId } from '../gods';
 
 const W = 940;
@@ -136,10 +135,7 @@ function Diagram({ chart }: { chart: ChartDef }) {
   );
 }
 
-export default function GodsCharts() {
-  const [id, setId] = useState(CHARTS[0].id);
-  const chart = CHARTS.find((c) => c.id === id) ?? CHARTS[0];
-
+export function ChartPanel({ chart }: { chart: ChartDef }) {
   const used = new Set<StageId>();
   chart.nodes.forEach((n) => {
     used.add(n.stage);
@@ -148,26 +144,7 @@ export default function GodsCharts() {
   const hasLink = chart.edges.some((e) => e.kind === 'link');
 
   return (
-    <section className="overview" aria-label="Gods charts">
-      <h2>Gods charts</h2>
-      <p className="note">
-        One chart per layer of thought. Gods are linked only where that layer’s own texts link them, and a new chart starts when the concept changes.
-      </p>
-
-      <div className="chart-tabs" role="tablist" aria-label="Choose a chart">
-        {CHARTS.map((c, i) => (
-          <button
-            key={c.id}
-            role="tab"
-            aria-selected={c.id === chart.id}
-            className={c.id === chart.id ? 'pill active' : 'pill'}
-            onClick={() => setId(c.id)}
-          >
-            {i + 1}. {c.tab}
-          </button>
-        ))}
-      </div>
-
+    <section className="panel chart-panel" aria-label={chart.title}>
       <h3 className="chart-title">{chart.title}</h3>
       <p className="chart-period">{chart.period}</p>
       <p className="chart-concept">{chart.concept}</p>
@@ -183,7 +160,7 @@ export default function GodsCharts() {
         <span><i className="line solid" /> comes from or contains</span>
         {hasLink && <span><i className="line dashed" /> consort</span>}
       </div>
-      <p className="note legend-note">Colour shows the book group that defines each god. Click a box to jump to that god’s card.</p>
+      <p className="note">Colour shows the book group that defines each god. Click a box to jump to that god’s card.</p>
     </section>
   );
 }
