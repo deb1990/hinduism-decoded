@@ -8,15 +8,15 @@ Live site: https://deb1990.github.io/hinduism-decoded/
 
 ## What is on the site
 
-Four pages, each with a full-screen intro over parallax artwork (mandalas drawn in code):
+Three kinds of page, each with a full-screen intro over parallax artwork:
 
-- **Gods** (home). A scroll story in four chapters: Vedic, Upanishadic, Puranic and Shakta. Each has its own gods chart and a tile for every god in it, 50 in all.
+- **Gods** (home). A scroll story in four chapters: Vedic, Upanishadic, Puranic and Shakta. Each has its own gods chart and a tile for every god in it, 50 in all. The page ends with the atlas, a matrix of every god against every book group.
 - **A page for each god** (`#/god/indra`). Full screen, with its own symbolic artwork as the background, a long explanation, a well-known story, symbols, worship, how traditions differ, and the books that define the god in order with their dates.
 - **Books.** The main scriptures on one to-scale timeline, with what each provides and what it says about the gods.
+- **A page for each book** (`#/book/rigveda`). Full screen, with a long point-by-point explanation: facts at a glance, structure and contents, key teachings, what it says about the gods, famous passages, composition and transmission, later influence, and how to read it today.
 - **Eras.** The eras of Hinduism from the Indus Valley to today, with key texts, ideas and people.
-- **Atlas.** A matrix of every god against every book group.
 
-Pages use hash routes (`#/books`, `#/eras`, `#/atlas`), so the site works on any static host.
+Pages use hash routes (`#/books`, `#/eras`, `#/god/<id>`), so the site works on any static host.
 
 ## Content status
 
@@ -40,6 +40,7 @@ npm run build      # static site in web/dist
 | --- | --- |
 | `web/src/gods.ts`, `web/src/godsMore.ts` | Each god: books, dates and notes, in order |
 | `web/src/stories.ts`, `web/src/stories/` | The long text on each god's page |
+| `web/src/bookDetails.ts`, `web/src/books/` | The long point-by-point text on each book's page |
 | `web/src/godArt.ts`, `web/src/components/GodArt.tsx` | Which artwork and colour each god gets, and the 34 motifs |
 | `web/src/charts.ts` | The four gods charts |
 | `web/src/scriptures.ts` | The scriptures timeline |

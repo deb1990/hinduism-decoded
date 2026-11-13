@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { KINDS, GOD_ROLES, SCRIPTURES, type Scripture, type KindId } from '../scriptures';
 import { useReveal } from '../hooks';
+import { bookHref } from '../route';
 
 const AXIS_MIN = -1500;
 const AXIS_MAX = 1600;
@@ -88,6 +89,7 @@ function ScriptureCard({ s, index }: { s: Scripture; index: number }) {
         <ul className="chips">
           {s.contents.map((c) => <li key={c}>{c}</li>)}
         </ul>
+        <a className="fullpage" href={bookHref(s.id)}>Read the full page <span aria-hidden="true">→</span></a>
       </article>
     </section>
   );

@@ -7,6 +7,7 @@ import Chapter from '../components/Chapter';
 import PageLinks from '../components/PageLinks';
 import { ChartPanel } from '../components/GodsCharts';
 import GodTile from '../components/GodTile';
+import { Matrix } from '../components/GodsView';
 
 const NAV = [
   { id: 'top', label: 'Start' },
@@ -14,6 +15,7 @@ const NAV = [
   { id: 'upanishads', label: 'Upanishads' },
   { id: 'puranic', label: 'Epics and Puranas' },
   { id: 'shakta', label: 'The Goddess' },
+  { id: 'atlas', label: 'Atlas' },
 ];
 const NAV_IDS = NAV.map((n) => n.id);
 
@@ -79,6 +81,16 @@ export default function GodsPage() {
       <SideNav />
       <Landing />
       {GOD_CHAPTERS.map((def) => <GodChapter key={def.id} def={def} />)}
+
+      <Chapter
+        id="atlas" art="lotus" accent="#4cc3d9" deep="#04131a"
+        kicker="The atlas" title="Where each god appears"
+        lede="Every god against every book group, in order of composition. The large dot marks where a god is defined."
+      >
+        <div className="body-inner">
+          <Matrix />
+        </div>
+      </Chapter>
       <PageLinks current="gods" />
     </>
   );

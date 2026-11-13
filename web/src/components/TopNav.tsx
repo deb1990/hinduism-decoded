@@ -1,7 +1,7 @@
 import { PAGES, type Route } from '../route';
 
 export default function TopNav({ route }: { route: Route }) {
-  const current = route === 'god' ? 'gods' : route;
+  const current = route === 'god' ? 'gods' : route === 'book' ? 'books' : route;
   return (
     <header className="topnav">
       <a className="brand" href="#/" aria-label="Hinduism decoded, home">

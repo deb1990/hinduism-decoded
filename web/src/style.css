@@ -580,3 +580,24 @@ body { overflow-x: hidden; }
   .atlas, .chapter-body .timeline { padding-left: 0; padding-right: 0; }
   .photo-art::after { background: rgba(3, 5, 12, .7); }
 }
+
+/* =========================================================
+   Book pages: point-by-point sections
+   ========================================================= */
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.points li { position: relative; padding-left: 26px; font-size: 17.5px; line-height: 1.65; color: #ece2d2; }
+.points li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: var(--a); box-shadow: 0 0 10px color-mix(in srgb, var(--a) 60%, transparent); }
+.points li strong { color: var(--ink); }
+.rolechip { display: inline-block; margin-right: 6px; padding: 1px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--a); border: 1px solid color-mix(in srgb, var(--a) 55%, transparent); }
+.glance { margin: 0; display: grid; gap: 12px 28px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.glance div { padding: 14px 16px; border-radius: 14px; background: color-mix(in srgb, var(--a) 9%, rgba(0, 0, 0, .25)); border: 1px solid color-mix(in srgb, var(--a) 25%, transparent); }
+.glance dt { margin: 0 0 4px; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--a); }
+.glance dd { margin: 0; font-size: 16px; line-height: 1.5; color: #ece2d2; }
+.godchips { display: flex; flex-wrap: wrap; gap: 10px; }
+.godchip { display: grid; gap: 1px; padding: 10px 16px; border-radius: 14px; text-decoration: none; color: var(--ink); border: 1px solid rgba(255, 255, 255, .14); background: rgba(255, 255, 255, .04); transition: border-color .2s, transform .2s; }
+.godchip:hover { border-color: var(--a); transform: translateY(-2px); }
+.godchip span { font-weight: 700; }
+.godchip small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fullpage { display: inline-block; margin-top: 16px; font-weight: 700; font-size: 14.5px; text-decoration: none; color: var(--accent); }
+.fullpage:hover { text-decoration: underline; }
+@media (max-width: 520px) { .points li { font-size: 16.5px; } .glance { grid-template-columns: 1fr; } }
