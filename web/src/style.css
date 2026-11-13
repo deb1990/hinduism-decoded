@@ -1,0 +1,280 @@
+:root {
+  --bg: #fbf7f0;
+  --surface: #ffffff;
+  --ink: #2a2118;
+  --muted: #6d5f50;
+  --line: #e4d9c7;
+  --accent: #c8591a;
+  --accent-soft: #fbe6d6;
+  --hi: #2f7d4f;
+  --mid: #b7791f;
+  --lo: #b0412e;
+  --shadow: 0 1px 2px rgba(60, 40, 20, .06), 0 8px 24px rgba(60, 40, 20, .08);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+:root[data-theme="dark"] {
+  --bg: #17120d;
+  --surface: #221b14;
+  --ink: #f3eadb;
+  --muted: #b3a48e;
+  --line: #3a2f24;
+  --accent: #f08a4b;
+  --accent-soft: #3a2616;
+  --hi: #6fc58f;
+  --mid: #e0b04e;
+  --lo: #ee8a77;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17120d; --surface: #221b14; --ink: #f3eadb; --muted: #b3a48e; --line: #3a2f24;
+    --accent: #f08a4b; --accent-soft: #3a2616; --hi: #6fc58f; --mid: #e0b04e; --lo: #ee8a77;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); }
+
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 30; background: transparent; }
+.progress-bar { height: 100%; width: 0; background: var(--accent); }
+
+/* Hero */
+.hero {
+  position: relative; text-align: center; padding: 88px 20px 72px;
+  background:
+    radial-gradient(900px 360px at 50% -10%, var(--accent-soft), transparent 70%),
+    var(--bg);
+}
+.theme {
+  position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 18px; cursor: pointer;
+}
+.eyebrow { margin: 0 0 12px; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--accent); font-weight: 600; }
+h1 { margin: 0 auto 16px; max-width: 760px; font: 600 clamp(30px, 5.4vw, 52px)/1.15 var(--serif); }
+.lede { margin: 0 auto 10px; max-width: 600px; font-size: 18px; color: var(--muted); }
+.note { margin: 0 auto 28px; font-size: 13px; color: var(--muted); }
+.cta {
+  display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--accent); color: #fff;
+  text-decoration: none; font-weight: 600;
+}
+.cta:hover { filter: brightness(1.08); }
+
+/* Era rail */
+.rail {
+  position: sticky; top: 0; z-index: 20; display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line); scrollbar-width: none; justify-content: safe center;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail a {
+  flex: none; padding: 6px 12px; border-radius: 999px; font-size: 13px; text-decoration: none;
+  color: var(--muted); border: 1px solid transparent; white-space: nowrap;
+}
+.rail a:hover { color: var(--ink); border-color: var(--line); }
+.rail a.active { background: var(--accent); color: #fff; }
+
+/* Timeline */
+.timeline { position: relative; width: 100%; margin: 0; padding: 56px clamp(20px, 5vw, 80px) 40px; }
+.timeline::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%);
+  background: linear-gradient(var(--line), var(--accent) 50%, var(--line));
+}
+.era { position: relative; width: 50%; padding: 0 44px 56px 0; }
+.era:nth-child(even) { margin-left: 50%; padding: 0 0 56px 44px; }
+.era .dot {
+  position: absolute; top: 22px; right: -9px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--accent); box-shadow: 0 0 0 5px var(--bg);
+}
+.era:nth-child(even) .dot { right: auto; left: -9px; }
+.era .date {
+  position: absolute; top: 20px; right: -170px; width: 150px; font: 600 13px/1.3 var(--sans);
+  color: var(--accent); text-align: left; letter-spacing: .02em;
+}
+.era:nth-child(even) .date { right: auto; left: -170px; text-align: right; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow);
+}
+.card .when { display: none; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+.card h2 { margin: 0 0 8px; font: 600 24px/1.25 var(--serif); }
+.card p { margin: 0 0 14px; color: var(--muted); }
+.more {
+  appearance: none; border: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit; font-size: 14px;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+}
+.more:hover { border-color: var(--accent); color: var(--accent); }
+.more .chev { display: inline-block; transition: transform .2s; margin-left: 4px; }
+.more[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+.detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.detail.open { grid-template-rows: 1fr; }
+.detail > div { overflow: hidden; }
+.facets { display: grid; gap: 16px; padding-top: 18px; }
+.facet h3 { margin: 0 0 6px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.chips li { padding: 4px 10px; font-size: 13px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.conf { display: flex; gap: 10px; align-items: baseline; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 12px; }
+.badge { flex: none; font-weight: 600; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; font-size: 12px; }
+.badge.High { color: var(--hi); } .badge.Medium { color: var(--mid); } .badge.Low { color: var(--lo); }
+
+/* Scroll reveal */
+.era { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.era.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .era { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+.foot { text-align: center; padding: 24px 20px 56px; color: var(--muted); font-size: 13px; }
+
+/* Narrow screens: single column, spine on the left */
+@media (max-width: 860px) {
+  .timeline::before { left: 28px; transform: none; }
+  .era, .era:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 40px 56px; }
+  .era .dot, .era:nth-child(even) .dot { left: 19px; right: auto; }
+  .era .date, .era:nth-child(even) .date { display: none; }
+  .card .when { display: block; }
+  .card { padding: 18px; }
+}
+
+/* Tabs */
+.tabs { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.tab { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 600; font-size: 14px; padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.tab.active { background: var(--accent); color: #fff; }
+.pill { flex: none; padding: 6px 12px; border-radius: 999px; font: inherit; font-size: 13px; color: var(--muted); border: 1px solid transparent; background: transparent; cursor: pointer; white-space: nowrap; }
+.pill:hover { color: var(--ink); border-color: var(--line); }
+.pill.active { background: var(--accent); color: #fff; }
+
+/* Scriptures: intro blocks */
+.intro { width: 100%; margin: 0; padding: 40px clamp(20px, 5vw, 80px) 8px; display: grid; gap: 28px; }
+.intro h2 { margin: 0 0 6px; font: 600 24px/1.25 var(--serif); }
+.intro .note { margin: 0 0 14px; text-align: left; }
+.godspath, .overview { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow); }
+.godspath p { margin: 0 0 14px; color: var(--muted); }
+.godspath ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.godspath li { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 12px; background: var(--accent-soft); font-size: 14px; line-height: 1.45; }
+.step-n { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 600; font-size: 13px; display: grid; place-items: center; }
+
+/* Gantt overview (to scale) */
+.gantt { --label: 190px; font-size: 13px; }
+.gantt-axis { position: relative; height: 22px; margin-left: var(--label); color: var(--muted); font-size: 11.5px; }
+.gantt-axis span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.gantt-row { display: flex; align-items: center; height: 26px; text-decoration: none; color: var(--ink); border-radius: 6px; }
+.gantt-row:hover { background: var(--accent-soft); }
+.gantt-name { width: var(--label); flex: none; padding-right: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gantt-track { position: relative; flex: 1; height: 100%; border-left: 1px solid var(--line); }
+.gantt-bar { position: absolute; top: 8px; height: 10px; border-radius: 5px; background: var(--accent); }
+.kind-veda { --k: #c8591a; } .kind-upanishad { --k: #8a5cc2; } .kind-sutra { --k: #2f7d8a; }
+.kind-epic { --k: #b7791f; } .kind-purana { --k: #2f7d4f; } .kind-agama { --k: #b0412e; } .kind-bhakti { --k: #3b6fc2; }
+.gantt-bar[class*="kind-"] { background: var(--k); }
+
+/* Scripture cards */
+.meta { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+.order { font: 600 12px var(--sans); color: var(--muted); }
+.kind { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; color: var(--k); border: 1px solid currentColor; }
+.block { margin: 0 0 14px; }
+.block h3 { margin: 0 0 4px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.block p { margin: 0; }
+.gods { padding: 12px 14px; border-radius: 12px; background: var(--accent-soft); border-left: 4px solid var(--accent); }
+.gods p { color: var(--ink); }
+.role { margin-left: 8px; letter-spacing: 0; text-transform: none; font-weight: 600; color: var(--accent); }
+.role-classical { border-left-color: var(--hi); } .role-classical .role { color: var(--hi); }
+.role-absolute { border-left-color: #8a5cc2; } .role-absolute .role { color: #8a5cc2; }
+.role-devotion { border-left-color: #3b6fc2; } .role-devotion .role { color: #3b6fc2; }
+.role-little { border-left-color: var(--line); } .role-little .role { color: var(--muted); }
+
+@media (max-width: 860px) {
+  .gantt { --label: 110px; }
+  .gantt-name { font-size: 12px; }
+}
+
+/* Gods view */
+.matrix-wrap { overflow-x: auto; }
+.matrix { width: 100%; border-collapse: collapse; font-size: 13px; }
+.matrix th, .matrix td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: center; }
+.matrix thead th { font-weight: 600; vertical-align: bottom; line-height: 1.25; }
+.matrix thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+.matrix tbody th { text-align: left; font-weight: 500; white-space: nowrap; }
+.matrix tbody th a { color: var(--ink); text-decoration: none; }
+.matrix tbody th a:hover { color: var(--accent); }
+.matrix tbody tr:hover { background: var(--accent-soft); }
+.mdot { display: inline-block; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.mdot.w-defines { width: 16px; height: 16px; }
+.mdot.w-major { width: 11px; height: 11px; opacity: .65; }
+.mdot.w-mention { width: 7px; height: 7px; opacity: .4; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 12.5px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.gods-grid { width: 100%; margin: 0; padding: 32px clamp(20px, 5vw, 80px) 40px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+.god { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow); }
+.god h2 { margin: 0 0 4px; font: 600 22px/1.25 var(--serif); }
+.gsum { margin: 0 0 10px; color: var(--muted); }
+.defined { margin: 0 0 16px; padding: 8px 12px; border-radius: 10px; background: var(--accent-soft); font-size: 14px; }
+.steps { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid var(--line); }
+.step { position: relative; padding: 0 0 16px 16px; }
+.step:last-child { padding-bottom: 0; }
+.step-dot { position: absolute; left: -26px; top: 4px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+.step.w-defines .step-dot { width: 14px; height: 14px; left: -27px; }
+.step.w-major .step-dot { width: 10px; height: 10px; left: -25px; opacity: .65; }
+.step.w-mention .step-dot { width: 8px; height: 8px; left: -24px; opacity: .4; }
+.step-head { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+.step-stage { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.step-weight { font-size: 12px; font-weight: 600; color: var(--accent); }
+.step.w-mention .step-weight { color: var(--muted); }
+.step-book { font-weight: 600; font-size: 14.5px; }
+.step-note { font-size: 14px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .matrix th, .matrix td { padding: 6px 6px; }
+  .matrix thead th small { display: none; }
+}
+
+.step-years { font-weight: 500; font-size: 12.5px; color: var(--accent); white-space: nowrap; margin-left: 4px; }
+
+/* Gods chart */
+.chart-wrap { overflow-x: auto; }
+.gods-chart { display: block; width: 100%; min-width: 640px; height: auto; font-family: var(--sans); }
+.gods-chart .edges path { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+.gods-chart .edges path.dash { stroke-dasharray: 4 4; }
+.gods-chart .grp { fill: none; stroke: var(--line); stroke-width: 1.25; }
+.gods-chart .grp-label { font-size: 11.5px; fill: var(--muted); }
+.s-veda { --c: #c8591a; } .s-upanishad { --c: #8a5cc2; } .s-epic { --c: #b7791f; } .s-purana { --c: #2f7d4f; }
+.cn rect { fill: color-mix(in srgb, var(--c) 14%, var(--surface)); stroke: var(--c); stroke-width: 1.5; }
+.cn-name { font-size: 13px; font-weight: 600; fill: var(--ink); }
+.cn-name.small { font-size: 12px; font-weight: 500; }
+.cn-sub { font-size: 11px; fill: var(--muted); }
+.cn.link { cursor: pointer; }
+.cn.link:hover rect { fill: color-mix(in srgb, var(--c) 30%, var(--surface)); stroke-width: 2.5; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: color-mix(in srgb, var(--c) 30%, var(--surface)); border: 1.5px solid var(--c); }
+.line { display: inline-block; width: 22px; height: 0; border-top: 1.5px solid var(--muted); }
+.line.dashed { border-top-style: dashed; }
+.s-later { --c: #2f7d8a; }
+
+.chart-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 18px; }
+.chart-tabs .pill { border-color: var(--line); }
+.chart-title { margin: 0 0 2px; font: 600 19px/1.3 var(--serif); }
+.chart-period { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--accent); }
+.chart-concept { margin: 0 0 16px; color: var(--muted); max-width: 760px; }
+.gods-chart .grp-title { font-size: 12.5px; font-weight: 600; fill: var(--ink); }
+.legend-note { margin: 10px 0 0; text-align: left; }
+
+/* Highlight the card a link jumped to */
+.god { scroll-margin-top: 80px; transition: box-shadow .3s, border-color .3s; }
+.god:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent), var(--shadow); animation: godflash 2.4s ease-out; }
+@keyframes godflash { 0% { background: var(--accent-soft); } 100% { background: var(--surface); } }
+@media (prefers-reduced-motion: reduce) { .god:target { animation: none; } }
+
+/* Hero: the name first, then the claim */
+.hero h1 { font-size: clamp(48px, 10vw, 96px); line-height: 1; letter-spacing: -.01em; margin-bottom: 14px; }
+.tagline { margin: 0 auto 20px; max-width: 760px; font: 500 clamp(20px, 3vw, 30px)/1.3 var(--serif); color: var(--ink); }
+
+.eyebrow.decoded { margin: 0 0 22px; font-size: 15px; letter-spacing: .4em; padding-left: .4em; }
+
+.hero h1 .power { font: 600 .26em/1 var(--sans); letter-spacing: .02em; text-transform: lowercase; color: var(--accent); vertical-align: top; position: relative; top: .35em; margin-left: .12em; }
+
+/* Keep the word centred: the superscript hangs off its right edge and takes no width */
+.hero h1 .word { position: relative; display: inline-block; }
+.hero h1 .power { position: absolute; left: 100%; top: .12em; margin-left: .1em; white-space: nowrap; vertical-align: baseline; }
