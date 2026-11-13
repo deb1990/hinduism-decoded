@@ -598,6 +598,13 @@ body { overflow-x: hidden; }
 .godchip:hover { border-color: var(--a); transform: translateY(-2px); }
 .godchip span { font-weight: 700; }
 .godchip small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.fullpage { display: inline-block; margin-top: 16px; font-weight: 700; font-size: 14.5px; text-decoration: none; color: var(--accent); }
-.fullpage:hover { text-decoration: underline; }
 @media (max-width: 520px) { .points li { font-size: 16.5px; } .glance { grid-template-columns: 1fr; } }
+
+/* The whole book card is the link: the title's link stretches over the card */
+.book-card { position: relative; cursor: pointer; transition: border-color .25s, transform .25s, box-shadow .25s; }
+.book-card .cardlink { color: inherit; text-decoration: none; }
+.book-card .cardlink::after { content: ""; position: absolute; inset: 0; border-radius: 20px; }
+.book-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.book-card:hover .cardlink { color: var(--accent); }
+.book-card .cardlink:focus-visible::after { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .book-card { transition: none; } .book-card:hover { transform: none; } }

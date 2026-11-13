@@ -70,13 +70,13 @@ function ScriptureCard({ s, index }: { s: Scripture; index: number }) {
     <section id={s.id} ref={ref} className={`era${shown ? ' in' : ''}`}>
       <span className="dot" />
       <span className="date">{s.dates}</span>
-      <article className="card">
+      <article className="card book-card">
         <div className="when">{s.dates}</div>
         <div className="meta">
           <span className="order">#{index + 1}</span>
           <span className={`kind kind-${s.kind}`}>{KINDS.find((k) => k.id === s.kind)?.label}</span>
         </div>
-        <h2>{s.name}</h2>
+        <h2><a className="cardlink" href={bookHref(s.id)}>{s.name}</a></h2>
         <p>{s.summary}</p>
         <div className="block">
           <h3>What it provides</h3>
@@ -89,7 +89,6 @@ function ScriptureCard({ s, index }: { s: Scripture; index: number }) {
         <ul className="chips">
           {s.contents.map((c) => <li key={c}>{c}</li>)}
         </ul>
-        <a className="fullpage" href={bookHref(s.id)}>Read the full page <span aria-hidden="true">→</span></a>
       </article>
     </section>
   );
