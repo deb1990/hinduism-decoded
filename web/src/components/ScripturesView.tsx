@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { KINDS, GOD_ROLES, SCRIPTURES, type Scripture, type KindId } from '../scriptures';
 import { useReveal } from '../hooks';
 import { bookHref } from '../route';
@@ -17,28 +17,78 @@ const STEPS = [
   { n: '4', title: 'Puranas', text: 'Fix the gods as most Hindus know them, with the Goddess made supreme in the Devi Mahatmya.' },
 ];
 
+// Broad ages, shaded behind the bars to give the dates some context. The boundaries are approximate.
+const AGES = [
+  { from: -1500, to: -500, label: 'Vedic age' },
+  { from: -500, to: 500, label: 'Epic and classical age' },
+  { from: 500, to: 1600, label: 'Medieval devotion' },
+];
+
 function Overview({ items }: { items: Scripture[] }) {
+  const [ref, shown] = useReveal<HTMLDivElement>(0.12);
   return (
     <section className="overview" aria-label="When each text was composed">
       <h2>When each text was composed</h2>
-      <p className="note">Bars show scholarly date ranges, drawn to scale. Many texts grew over centuries.</p>
-      <div className="gantt">
-        <div className="gantt-axis">
-          {TICKS.map((t) => (
-            <span key={t} style={{ left: `${pos(t)}%` }}>{tickLabel(t)}</span>
-          ))}
+      <p className="note">
+        Each bar is a book’s scholarly date range, drawn to scale. Faded ends mean the dates are uncertain. Click a row to open the book.
+      </p>
+      <div className="tl-legend">
+        {KINDS.map((k) => <span key={k.id}><i className={`tl-key kind-${k.id}`} /> {k.label}</span>)}
+      </div>
+
+      <div className="tl-scroll">
+        <div ref={ref} className={`tl${shown ? ' in' : ''}`}>
+          <div className="tl-head">
+            <span />
+            <div className="tl-axis">
+              {AGES.map((a) => (
+                <span key={a.label} className="tl-age" style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }}>{a.label}</span>
+              ))}
+              {TICKS.map((t) => (
+                <span key={t} className="tl-tick" style={{ left: `${pos(t)}%` }}>{tickLabel(t)}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="tl-rows">
+            <div className="tl-grid" aria-hidden="true">
+              {AGES.map((a, i) => (
+                <span key={a.label} className={`tl-band b${i}`} style={{ left: `${pos(a.from)}%`, width: `${pos(a.to) - pos(a.from)}%` }} />
+              ))}
+              {TICKS.map((t) => <span key={t} className="tl-line" style={{ left: `${pos(t)}%` }} />)}
+            </div>
+
+            {items.map((s, i) => {
+              const left = pos(s.start);
+              const w = Math.max(pos(s.end) - pos(s.start), 0.6);
+              const point = s.end - s.start < 40;
+              const inside = !point && w > 14;
+              const labelLeft = left + w > 76;
+              return (
+                <a key={s.id} href={bookHref(s.id)} className="tl-row" style={{ '--i': i } as CSSProperties}>
+                  <span className="tl-name">{s.name}</span>
+                  <span className="tl-track">
+                    {point ? (
+                      <i className={`tl-dot kind-${s.kind}`} style={{ left: `${left}%` }} />
+                    ) : (
+                      <span className={`tl-bar kind-${s.kind}`} style={{ left: `${left}%`, width: `${w}%` }}>
+                        {inside && <em>{s.dates}</em>}
+                      </span>
+                    )}
+                    {!inside && (
+                      <em
+                        className="tl-out"
+                        style={labelLeft ? { right: `calc(${100 - left}% + 10px)` } : { left: `calc(${left + w}% + 10px)` }}
+                      >
+                        {s.dates}
+                      </em>
+                    )}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
         </div>
-        {items.map((s) => (
-          <a key={s.id} href={`#${s.id}`} className="gantt-row">
-            <span className="gantt-name">{s.name}</span>
-            <span className="gantt-track">
-              <span
-                className={`gantt-bar kind-${s.kind}`}
-                style={{ left: `${pos(s.start)}%`, width: `${Math.max(pos(s.end) - pos(s.start), 0.8)}%` }}
-              />
-            </span>
-          </a>
-        ))}
       </div>
     </section>
   );
